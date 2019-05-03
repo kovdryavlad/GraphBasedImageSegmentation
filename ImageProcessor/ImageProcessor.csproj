@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapConverter.cs" />
+    <Compile Include="NeightbourType.cs" />
     <Compile Include="DisjointSet.cs" />
     <Compile Include="DoubleArrayImageOperations.cs" />
     <Compile Include="Edge.cs" />

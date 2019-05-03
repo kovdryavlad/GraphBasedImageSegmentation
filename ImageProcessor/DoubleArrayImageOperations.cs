@@ -12,9 +12,10 @@ namespace ImageProcessor
         public double g;
         public double b;
 
-        public static  Color GetRandomColor()
+        static Random random = new Random();
+
+        public static Color GetRandomColor()
         {
-            Random random = new Random();
             Color color = new Color();
 
             color.r = random.Next(256);

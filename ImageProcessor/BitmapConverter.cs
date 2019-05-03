@@ -121,21 +121,26 @@ namespace ImageProcessor
         {
             double[,,] im = new double[3, height, width];
 
-            Color[] colors = Enumerable.Range(0, width * height)
-                                          .Select(i => Color.GetRandomColor())
-                                          .ToArray();
-
-
+            Dictionary<int, Color> colors = new Dictionary<int, Color>();
 
             for (int h = 0; h < height; h++)
             {
                 for (int w = 0; w < width; w++)
                 {
-                    int comp = segmentedSet.Find(h * w + w);
+                    Color ccc;
 
-                    im[0, h, w] = Limit(colors[comp].r);
-                    im[0, h, w] = Limit(colors[comp].g);
-                    im[0, h, w] = Limit(colors[comp].b);
+                    int comp = segmentedSet.Find(h * width + w);
+
+                    if (colors.TryGetValue(comp, out ccc) == false)
+                    {
+                        ccc = Color.GetRandomColor();
+                        colors.Add(comp, ccc);
+                    }
+                        
+
+                    im[0, h, w] = Limit(ccc.r);
+                    im[1, h, w] = Limit(ccc.g);
+                    im[2, h, w] = Limit(ccc.b);
                 }
             }
 

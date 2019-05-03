@@ -15,19 +15,27 @@ namespace ImageProcessor
         public int neighbourX;
         public double w;
 
+        int imageWidth;
+
         public int A => numberInOneDimArray(currentY, currentX);
         public int B => numberInOneDimArray(neighbourY, neighbourX);
 
-        static int numberInOneDimArray(int y, int x) => y * x + x;
+        int numberInOneDimArray(int y, int x) => y * imageWidth + x;
 
-        public Edge(int x, int y)
+        public NeightbourType neightbourType;
+
+        public Edge(int x, int y, int imageWidth)
         {
             currentX = x;
             currentY = y;
+
+            this.imageWidth = imageWidth;
         }
 
-        public void SetNeighbour(int x, int y)
+        public void SetNeighbour(int x, int y, NeightbourType neightbourType)
         {
+            this.neightbourType = neightbourType;
+            
             neighbourX = x;
             neighbourY = y;
         }
@@ -39,7 +47,7 @@ namespace ImageProcessor
 
         public override string ToString()
         {
-            return String.Format("Current Coords({0}, {1}) | NeighbourCoords({2}, {3}) | Weight:{4}", currentX, currentY, neighbourX, neighbourY, w);
+            return String.Format("Current Coords({0}, {1}) | NeighbourCoords({2}, {3}) | Weight:{4} | NeightBour Type: {5}", currentX, currentY, neighbourX, neighbourY, w, neightbourType);
         }
     }
 }
