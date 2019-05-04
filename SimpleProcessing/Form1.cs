@@ -100,5 +100,16 @@ namespace SimpleProcessing
 
             pictureBox1.Image = segmentObj.DoSegmentation(_image);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            double sigma = Convert.ToDouble(sigmaTextBox.Text.Replace(".", ","));
+
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            double[][] filter = gaussianBlur.getKernel(sigma);
+
+            _image = DoubleArrayImageOperations.ConvolutionFilter(_image, filter);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(_image);
+        }
     }
 }

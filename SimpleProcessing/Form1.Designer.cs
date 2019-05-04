@@ -47,6 +47,9 @@
             this.ContrastTrackBar = new System.Windows.Forms.TrackBar();
             this.ContrastTextBox = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.sigmaTextBox = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -122,11 +125,14 @@
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTrackBar, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTextBox, 2, 5);
-            this.tableLayoutPanel2.Controls.Add(this.button4, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.button4, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.sigmaTextBox, 2, 6);
+            this.tableLayoutPanel2.Controls.Add(this.button5, 0, 6);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(870, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 8;
+            this.tableLayoutPanel2.RowCount = 9;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -134,7 +140,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 532);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -263,13 +270,44 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(95, 198);
+            this.button4.Location = new System.Drawing.Point(95, 229);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(110, 23);
             this.button4.TabIndex = 11;
             this.button4.Text = "Сегментация";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(114, 201);
+            this.label4.Margin = new System.Windows.Forms.Padding(22, 6, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "sigma = ";
+            // 
+            // sigmaTextBox
+            // 
+            this.sigmaTextBox.Location = new System.Drawing.Point(211, 203);
+            this.sigmaTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.sigmaTextBox.Name = "sigmaTextBox";
+            this.sigmaTextBox.Size = new System.Drawing.Size(30, 20);
+            this.sigmaTextBox.TabIndex = 10;
+            this.sigmaTextBox.Text = "0.84";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(5, 200);
+            this.button5.Margin = new System.Windows.Forms.Padding(5);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 21);
+            this.button5.TabIndex = 13;
+            this.button5.Text = "размыть";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -317,6 +355,9 @@
         private System.Windows.Forms.TextBox ContrastTextBox;
         private System.Windows.Forms.ToolStripMenuItem вернутьсяКИсходномуToolStripMenuItem;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox sigmaTextBox;
+        private System.Windows.Forms.Button button5;
     }
 }
 

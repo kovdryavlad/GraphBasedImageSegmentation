@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Algebra">
+      <HintPath>D:\development6sem\Matrix-master\Matrix-master\SimpleMatrix\bin\Debug\Algebra.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleMatrix">
+      <HintPath>D:\development6sem\Matrix-master\Matrix-master\SimpleMatrix\bin\Debug\SimpleMatrix.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -43,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapConverter.cs" />
+    <Compile Include="GaussianBlur.cs" />
     <Compile Include="NeightbourType.cs" />
     <Compile Include="DisjointSet.cs" />
     <Compile Include="DoubleArrayImageOperations.cs" />

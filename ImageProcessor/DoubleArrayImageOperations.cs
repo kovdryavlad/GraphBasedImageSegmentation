@@ -143,6 +143,64 @@ namespace ImageProcessor
                 c.b = average + coef* (c.b - average);
             });
         }
+
+        public static double[,,] ConvolutionFilter(double[,,] arrayImage, double[][] filter)
+        {
+            int height = arrayImage.GetLength(1);
+            int width = arrayImage.GetLength(2);
+
+            int filterHeight = filter[0].Length;
+            int filterWidth = filter.Length;
+
+            double[,,] resultImage = new double[3, height, width];
+            int filterRadius = filter.GetLength(0)/2;
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    double pixelR = 0;
+                    double pixelG = 0;
+                    double pixelB = 0;
+
+                    int StartY = y - filterRadius;
+                    int StartX = x - filterRadius;
+
+                    for (int FX = 0; FX < filterWidth; FX++)
+                    {
+                        for (int FY = 0; FY < filterHeight; FY++)
+                        {
+                            int xx = StartX + FX;
+                            int yy = StartY + FY;
+
+                            if (xx < 0)
+                                xx = Math.Abs(xx) - 1;
+
+
+                            if (yy < 0)
+                                yy = Math.Abs(yy) - 1;
+
+                            if (xx >= width)
+                                xx = xx - (FX - filterRadius);
+
+
+                            if (yy >= height)
+                                yy = yy - (FY - filterRadius);
+
+                            pixelR += arrayImage[0, yy, xx] * filter[FX][FY];
+                            pixelG += arrayImage[1, yy, xx] * filter[FX][FY];
+                            pixelB += arrayImage[2, yy, xx] * filter[FX][FY];
+                        }
+                    }
+
+                    resultImage[0, y, x] = pixelR;
+                    resultImage[1, y, x] = pixelG;
+                    resultImage[2, y, x] = pixelB;
+                }
+            }
+
+            return resultImage;
+        }
     }
 
 
