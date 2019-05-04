@@ -10,19 +10,24 @@ namespace ImageProcessor
 
     public class Segment
     {
-        public Bitmap DoSegmentation(Bitmap bmp, double k = 200)
+        public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize)
         {
             double[,,] arrayImage = BitmapConverter.BitmapToDoubleRgb(bmp);
 
-            return DoSegmentation(arrayImage);
+            return DoSegmentation(arrayImage, sigma, k, minSize);
         }
 
-        public Bitmap DoSegmentation(double[,,] arrayImage, double k = 200)
+        public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize)
         {
             //препроцессинг иображения
             //arrayImage = DoubleArrayImageOperations.GetGrayScale(arrayImage);
 
             //DebugImageInfo(arrayImage);
+
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            double[][] filter = gaussianBlur.getKernel(sigma);
+
+            arrayImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
 
             //построение графа
             Edge[] edges = buildGraphByImage(arrayImage)
@@ -40,13 +45,30 @@ namespace ImageProcessor
             Edge[] edgesVer = edges.Where(el => el.neightbourType == NeightbourType.Vertical).ToArray();
             Edge[] edgesTopDiag = edges.Where(el => el.neightbourType == NeightbourType.TopDiagonal).ToArray();
             Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
+            
             //сегментированный лес непересекающихся деревьев
             DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);
+
+            //присоеденить маленькие коппоненты к большим
+            PostProcessSmallComponents(edges, segmentedSet, minSize);
+
+            //присоеденить те, что меньше min_size к соседу по ребру
 
             int height = arrayImage.GetLength(1);
             int width = arrayImage.GetLength(2);
 
             return BitmapConverter.SegmentedSetToBitmap(segmentedSet, height, width);
+        }
+
+        private void PostProcessSmallComponents(Edge[] edges, DisjointSet segmentedSet, int minSize)
+        {
+            for (int i = 0; i < edges.Length; i++)
+            {
+                int a = segmentedSet.Find(edges[i].A);
+                int b = segmentedSet.Find(edges[i].B);
+                if ((a != b) && ((segmentedSet.Size(a) < minSize) || (segmentedSet.Size(b) < minSize)))
+                    segmentedSet.Join(a, b);
+            }
         }
 
         private Edge[] buildGraphByImage(double[,,] arrayImage)
@@ -156,10 +178,7 @@ namespace ImageProcessor
 
             return disjointSet;
         }
-
-
-       
-
+        
         private void DebugImageInfo(double[,,] arrayImage)
         {
             int width = arrayImage.GetLength(2);
@@ -178,8 +197,5 @@ namespace ImageProcessor
                 }
             }
         }
-
     }
-
-
 }

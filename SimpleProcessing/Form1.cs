@@ -96,9 +96,13 @@ namespace SimpleProcessing
 
         private void button4_Click(object sender, EventArgs e)
         {
+            double sigma = Convert.ToDouble(sigmaTextBox.Text.Replace(".", ","));
+            int k = Convert.ToInt32(KtextBox.Text);
+            int min = Convert.ToInt32(MinTextBox.Text);
+
             Segment segmentObj = new Segment();
 
-            pictureBox1.Image = segmentObj.DoSegmentation(_image);
+            pictureBox1.Image = segmentObj.DoSegmentation(_image, sigma, k, min);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -108,8 +112,8 @@ namespace SimpleProcessing
             GaussianBlur gaussianBlur = new GaussianBlur();
             double[][] filter = gaussianBlur.getKernel(sigma);
 
-            _image = DoubleArrayImageOperations.ConvolutionFilter(_image, filter);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(_image);
+            double[,,] image = DoubleArrayImageOperations.ConvolutionFilter(_image, filter);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
         }
     }
 }

@@ -50,6 +50,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.sigmaTextBox = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.KtextBox = new System.Windows.Forms.TextBox();
+            this.MinTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -125,14 +129,18 @@
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTrackBar, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTextBox, 2, 5);
-            this.tableLayoutPanel2.Controls.Add(this.button4, 1, 7);
             this.tableLayoutPanel2.Controls.Add(this.label4, 1, 6);
             this.tableLayoutPanel2.Controls.Add(this.sigmaTextBox, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.button5, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.button4, 1, 9);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.KtextBox, 2, 7);
+            this.tableLayoutPanel2.Controls.Add(this.MinTextBox, 2, 8);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(870, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 9;
+            this.tableLayoutPanel2.RowCount = 11;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -140,6 +148,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 532);
@@ -270,7 +280,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(95, 229);
+            this.button4.Location = new System.Drawing.Point(95, 289);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(110, 23);
             this.button4.TabIndex = 11;
@@ -308,6 +318,46 @@
             this.button5.Text = "размыть";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(124, 232);
+            this.label5.Margin = new System.Windows.Forms.Padding(32, 6, 3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(34, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "k = ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(114, 262);
+            this.label6.Margin = new System.Windows.Forms.Padding(22, 6, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "min = ";
+            // 
+            // KtextBox
+            // 
+            this.KtextBox.Location = new System.Drawing.Point(211, 234);
+            this.KtextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.KtextBox.Name = "KtextBox";
+            this.KtextBox.Size = new System.Drawing.Size(30, 20);
+            this.KtextBox.TabIndex = 10;
+            this.KtextBox.Text = "200";
+            // 
+            // MinTextBox
+            // 
+            this.MinTextBox.Location = new System.Drawing.Point(211, 264);
+            this.MinTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.MinTextBox.Name = "MinTextBox";
+            this.MinTextBox.Size = new System.Drawing.Size(30, 20);
+            this.MinTextBox.TabIndex = 10;
+            this.MinTextBox.Text = "100";
             // 
             // Form1
             // 
@@ -358,6 +408,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox sigmaTextBox;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox KtextBox;
+        private System.Windows.Forms.TextBox MinTextBox;
     }
 }
 

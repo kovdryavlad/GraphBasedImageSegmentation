@@ -122,6 +122,7 @@ namespace ImageProcessor
             double[,,] im = new double[3, height, width];
 
             Dictionary<int, Color> colors = new Dictionary<int, Color>();
+            int totalSize = 0;
 
             for (int h = 0; h < height; h++)
             {
@@ -135,6 +136,10 @@ namespace ImageProcessor
                     {
                         ccc = Color.GetRandomColor();
                         colors.Add(comp, ccc);
+
+                        int compSize = segmentedSet.Size(comp);
+                        totalSize += compSize;
+                        System.Diagnostics.Debug.WriteLine("Component: "+comp +" | size: " + compSize);
                     }
                         
 
@@ -143,6 +148,9 @@ namespace ImageProcessor
                     im[2, h, w] = Limit(ccc.b);
                 }
             }
+
+            System.Diagnostics.Debug.WriteLine("Total Size: " + totalSize);
+            System.Diagnostics.Debug.WriteLine("Height*Width: " + height*width);
 
 
             return DoubleRgbToBitmap(im);
