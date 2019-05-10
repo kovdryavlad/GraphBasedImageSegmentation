@@ -46,10 +46,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.ContrastTrackBar = new System.Windows.Forms.TrackBar();
             this.ContrastTextBox = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.sigmaTextBox = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.KtextBox = new System.Windows.Forms.TextBox();
@@ -278,16 +278,6 @@
             this.ContrastTextBox.Size = new System.Drawing.Size(30, 20);
             this.ContrastTextBox.TabIndex = 10;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(95, 289);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Сегментация";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -318,6 +308,16 @@
             this.button5.Text = "размыть";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(95, 289);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(110, 23);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "Сегментация";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label5
             // 
