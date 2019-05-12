@@ -19,7 +19,7 @@ namespace ReadingTest
 
         public void CalcMainParams()
         {
-            GetKvantil();
+            _kvantil = GetKvantil();
             CalcExpectation();
             CalcDisp();
             FillIntervalsForExpectation();

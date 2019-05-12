@@ -43,6 +43,24 @@ namespace ImageProcessor
             return res;
         }
 
+        public static double[,,] BitmapToDoubleRgbNaive(Bitmap bmp)
+        {
+            int width = bmp.Width,
+                height = bmp.Height;
+            double [,,] res = new double[3, height, width];
+            for (int y = 0; y < height; ++y)
+            {
+                for (int x = 0; x < width; ++x)
+                {
+                    Color color = bmp.GetPixel(x, y);
+                    res[0, y, x] = color.R;
+                    res[1, y, x] = color.G;
+                    res[2, y, x] = color.B;
+                }
+            }
+            return res;
+        }
+
         public unsafe static Bitmap DoubleRgbToBitmap(double[,,] arrayImage)
         {
             int width = arrayImage.GetLength(2),
@@ -76,65 +94,24 @@ namespace ImageProcessor
             return res;
         }
 
-        /*
-        public unsafe static Bitmap SegmentedSetToBitmap(DisjointSet segmentedSet, int height, int width)
-        {
-            Color[] colors = Enumerable.Range(0, width*height)
-                                          .Select(i => Color.GetRandomColor())
-                                          .ToArray();
-
-
-            Bitmap res = new Bitmap(width, height);
-            BitmapData bd = res.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly,
-                PixelFormat.Format24bppRgb);
-
-
-            try
-            {
-                byte* curpos;
-                
-                    for (int h = 0; h < height; h++)
-                    {
-                        curpos = ((byte*)bd.Scan0) + h * bd.Stride;
-                        for (int w = 0; w < width; w++)
-                        {
-
-                            int component = segmentedSet.Find(h * width + w);
-                            Color c = colors[component];
-
-                            *(curpos++) = Limit(c.b); 
-                            *(curpos++) = Limit(c.g); 
-                            *(curpos++) = Limit(c.r); 
-                        }
-                    }
-                
-            }
-            finally
-            {
-                res.UnlockBits(bd);
-            }
-            return res;
-        }
-        */
-
         public unsafe static Bitmap SegmentedSetToBitmap(DisjointSet segmentedSet, int height, int width)
         {
             double[,,] im = new double[3, height, width];
 
-            Dictionary<int, Color> colors = new Dictionary<int, Color>();
+            Dictionary<int, ColorCustom> colors = new Dictionary<int, ColorCustom>();
             int totalSize = 0;
 
             for (int h = 0; h < height; h++)
             {
                 for (int w = 0; w < width; w++)
                 {
-                    Color ccc;
+                    ColorCustom ccc;
 
                     int comp = segmentedSet.Find(h * width + w);
 
                     if (colors.TryGetValue(comp, out ccc) == false)
                     {
-                        ccc = Color.GetRandomColor();
+                        ccc = ColorCustom.GetRandomColor();
                         colors.Add(comp, ccc);
 
                         int compSize = segmentedSet.Size(comp);

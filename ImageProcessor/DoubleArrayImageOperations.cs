@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImageProcessor
 {
-    public class Color
+    public class ColorCustom
     {
         public double r;
         public double g;
@@ -14,9 +14,9 @@ namespace ImageProcessor
 
         static Random random = new Random();
 
-        public static Color GetRandomColor()
+        public static ColorCustom GetRandomColor()
         {
-            Color color = new Color();
+            ColorCustom color = new ColorCustom();
 
             color.r = random.Next(256);
             color.g = random.Next(256);
@@ -25,9 +25,9 @@ namespace ImageProcessor
             return color;
         }
 
-        public Color() { }
+        public ColorCustom() { }
 
-        public Color(int r, int g, int b)
+        public ColorCustom(int r, int g, int b)
         {
             this.r = r;
             this.g = g;
@@ -37,14 +37,14 @@ namespace ImageProcessor
 
     public class DoubleArrayImageOperations
     {
-        private static double[,,] processImage(double[,,] arrayImage, Action<Color> pixelAction)
+        private static double[,,] processImage(double[,,] arrayImage, Action<ColorCustom> pixelAction)
         {
             double[,,] res = (double[,,])arrayImage.Clone();
 
             int width = arrayImage.GetLength(2),
                 height = arrayImage.GetLength(1);
 
-            Color c = new Color();
+            ColorCustom c = new ColorCustom();
 
             for (int h = 0; h < height; h++)
             {
