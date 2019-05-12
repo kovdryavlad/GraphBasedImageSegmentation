@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleProcessing", "SimpleP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessor", "ImageProcessor\ImageProcessor.csproj", "{461F8992-01C3-4C11-B008-E93E0DE50DA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadingTest", "ReadingTest\ReadingTest.csproj", "{18E57B0B-857F-42BC-AD4A-78C4D5E509BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{461F8992-01C3-4C11-B008-E93E0DE50DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{461F8992-01C3-4C11-B008-E93E0DE50DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{461F8992-01C3-4C11-B008-E93E0DE50DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18E57B0B-857F-42BC-AD4A-78C4D5E509BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18E57B0B-857F-42BC-AD4A-78C4D5E509BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18E57B0B-857F-42BC-AD4A-78C4D5E509BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18E57B0B-857F-42BC-AD4A-78C4D5E509BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
