@@ -24,7 +24,7 @@ namespace ImageProcessor
             int size = 2 * radius + 1;
 
             double sum = 0;     //сума елементів у ядрі
-            Matrix kernel = Matrix.Create.New(size);
+            Matrix kernel = new Matrix(size);
 
             for (int i = 0; i < size; i++)
                 for (int j = 0; j < size; j++)
