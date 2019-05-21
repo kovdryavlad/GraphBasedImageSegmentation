@@ -36,9 +36,6 @@
     <Reference Include="Algebra, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCode.Algebra.1.0.0\lib\net471\Algebra.dll</HintPath>
     </Reference>
-    <Reference Include="ImageProcessor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleCode.ImageProcessor.1.0.0\lib\net471\ImageProcessor.dll</HintPath>
-    </Reference>
     <Reference Include="SimpleMatrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleCode.SimpleMatrix.1.0.2\lib\net471\SimpleMatrix.dll</HintPath>
     </Reference>
