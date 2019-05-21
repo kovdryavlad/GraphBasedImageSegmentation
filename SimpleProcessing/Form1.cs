@@ -1,4 +1,5 @@
 ﻿using ImageProcessor;
+using SegmentationBasedOnGraph;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
