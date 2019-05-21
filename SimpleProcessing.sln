@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadingTest", "ReadingTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationBasedOnGraph", "SegmentationBasedOnGraph\SegmentationBasedOnGraph.csproj", "{C5A6A232-1200-4B90-ADD9-7888C4C31D91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNugetInstalling", "TestNugetInstalling\TestNugetInstalling.csproj", "{616AA2B4-EF84-4BDA-9333-AA534FD33FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{616AA2B4-EF84-4BDA-9333-AA534FD33FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{616AA2B4-EF84-4BDA-9333-AA534FD33FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{616AA2B4-EF84-4BDA-9333-AA534FD33FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{616AA2B4-EF84-4BDA-9333-AA534FD33FBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
