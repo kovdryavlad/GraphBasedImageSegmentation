@@ -134,13 +134,12 @@ namespace SegmentationBasedOnGraph
 
             return Math.Abs(I1 - I2);
             */
-
-
-            double rDiff = Math.Pow(arrayImage[0, y1, x1] - arrayImage[0, y2, x2], 2);
-            double gDiff = Math.Pow(arrayImage[1, y1, x1] - arrayImage[1, y2, x2], 2);
-            double bDiff = Math.Pow(arrayImage[2, y1, x1] - arrayImage[2, y2, x2], 2);
-
-            return Math.Sqrt(rDiff + gDiff + bDiff);
+            
+            -double rDiff = Math.Pow(arrayImage[0, y1, x1] - arrayImage[0, y2, x2], 2);
+            -double gDiff = Math.Pow(arrayImage[1, y1, x1] - arrayImage[1, y2, x2], 2);
+            -double bDiff = Math.Pow(arrayImage[2, y1, x1] - arrayImage[2, y2, x2], 2);
+            -
+            -return Math.Sqrt(rDiff + gDiff + bDiff);
 
         }
 
