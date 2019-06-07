@@ -134,13 +134,25 @@ namespace SegmentationBasedOnGraph
 
             return Math.Abs(I1 - I2);
             */
-            
-            -double rDiff = Math.Pow(arrayImage[0, y1, x1] - arrayImage[0, y2, x2], 2);
-            -double gDiff = Math.Pow(arrayImage[1, y1, x1] - arrayImage[1, y2, x2], 2);
-            -double bDiff = Math.Pow(arrayImage[2, y1, x1] - arrayImage[2, y2, x2], 2);
-            -
-            -return Math.Sqrt(rDiff + gDiff + bDiff);
 
+            // for rgb
+            double rDiff = Math.Pow(arrayImage[0, y1, x1] - arrayImage[0, y2, x2], 2);
+            double gDiff = Math.Pow(arrayImage[1, y1, x1] - arrayImage[1, y2, x2], 2);
+            double bDiff = Math.Pow(arrayImage[2, y1, x1] - arrayImage[2, y2, x2], 2);
+
+            double rgbDifference = Math.Sqrt(rDiff + gDiff + bDiff);
+
+            //return Math.Sqrt(rDiff + gDiff + bDiff);
+
+            //for lab
+            double[] labA = LabColorConverter.rgb2lab(new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] });
+            double[] labB = LabColorConverter.rgb2lab(new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] });
+
+            double labDIfference = LabColorConverter.deltaE(labA, labB);
+
+            //System.Diagnostics.Debug.WriteLine("RGBDiff: " + rgbDifference.ToString("0.00") + "  --  LabDiff:" + labDIfference.ToString("0.00"));
+
+            return labDIfference;
         }
 
         private DisjointSet SegmentOnDisjointSet(double k, double[,,] grayScaleArrayImage, Edge[] edges)

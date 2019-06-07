@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapConverter.cs" />
-    <Compile Include="ColorConverter.cs" />
+    <Compile Include="LabColorConverter.cs" />
     <Compile Include="GaussianBlur.cs" />
     <Compile Include="DoubleArrayImageOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
