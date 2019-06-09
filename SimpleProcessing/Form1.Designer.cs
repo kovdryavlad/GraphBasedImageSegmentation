@@ -54,6 +54,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.KtextBox = new System.Windows.Forms.TextBox();
             this.MinTextBox = new System.Windows.Forms.TextBox();
+            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,7 +68,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem,
-            this.вернутьсяКИсходномуToolStripMenuItem});
+            this.вернутьсяКИсходномуToolStripMenuItem,
+            this.зберегтиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
@@ -77,15 +79,15 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.открытьToolStripMenuItem.Text = "Відкрити";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // вернутьсяКИсходномуToolStripMenuItem
             // 
             this.вернутьсяКИсходномуToolStripMenuItem.Name = "вернутьсяКИсходномуToolStripMenuItem";
-            this.вернутьсяКИсходномуToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
-            this.вернутьсяКИсходномуToolStripMenuItem.Text = "Вернуться к исходному";
+            this.вернутьсяКИсходномуToolStripMenuItem.Size = new System.Drawing.Size(180, 20);
+            this.вернутьсяКИсходномуToolStripMenuItem.Text = "Повернутися до початкового";
             this.вернутьсяКИсходномуToolStripMenuItem.Click += new System.EventHandler(this.вернутьсяКИсходномуToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
@@ -359,6 +361,13 @@
             this.MinTextBox.TabIndex = 10;
             this.MinTextBox.Text = "100";
             // 
+            // зберегтиToolStripMenuItem
+            // 
+            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,7 +377,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Ковдря. Дипломна робота";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -412,6 +421,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox KtextBox;
         private System.Windows.Forms.TextBox MinTextBox;
+        private System.Windows.Forms.ToolStripMenuItem зберегтиToolStripMenuItem;
     }
 }
 

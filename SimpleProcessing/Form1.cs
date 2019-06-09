@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace SimpleProcessing
     public partial class Form1 : Form
     {
         double[,,] _image;
+        string m_imageName;
 
         public Form1()
         {
@@ -33,6 +35,8 @@ namespace SimpleProcessing
             {
                 Bitmap bmp = new Bitmap(openFileWindow.FileName);
                 _image = BitmapConverter.BitmapToDoubleRgb(bmp);
+
+                m_imageName = Path.GetFileNameWithoutExtension(openFileWindow.FileName);
 
                 pictureBox1.Width = bmp.Width;
                 pictureBox1.Height = bmp.Height;
@@ -115,6 +119,22 @@ namespace SimpleProcessing
 
             double[,,] image = DoubleArrayImageOperations.ConvolutionFilter(_image, filter);
             pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+        }
+
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                InitialDirectory = Environment.CurrentDirectory,
+                FileName = $"{m_imageName}_segmented(sigma = {sigmaTextBox.Text}) - k = {KtextBox.Text} - min = {MinTextBox.Text}).jpg",
+                
+            };
+
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image.Save(sfd.FileName);
+            }
         }
     }
 }
