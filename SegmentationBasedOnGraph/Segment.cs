@@ -1,4 +1,5 @@
 ﻿using ImageProcessor;
+using SegmentationBasedOnGraph.ColorShemes;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,24 +12,31 @@ namespace SegmentationBasedOnGraph
 
     public class Segment
     {
-        public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize)
+        public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
             double[,,] arrayImage = BitmapConverter.BitmapToDoubleRgb(bmp);
 
-            return DoSegmentation(arrayImage, sigma, k, minSize);
+            return DoSegmentation(arrayImage, sigma, k, minSize, colorSheme);
         }
 
-        public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize)
+        IColorSheme m_colorSheme;
+
+        public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
+            m_colorSheme = colorSheme;
+
             //препроцессинг иображения
-            //arrayImage = DoubleArrayImageOperations.GetGrayScale(arrayImage);
+            arrayImage = colorSheme.Convert(arrayImage);
 
             //DebugImageInfo(arrayImage);
 
+            //smoothing
             GaussianBlur gaussianBlur = new GaussianBlur();
             double[][] filter = gaussianBlur.getKernel(sigma);
-
             arrayImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
+
+            //тест размещения преобразования цвета
+            //arrayImage = colorSheme.Convert(arrayImage);
 
             //построение графа
             Edge[] edges = buildGraphByImage(arrayImage)
@@ -145,14 +153,19 @@ namespace SegmentationBasedOnGraph
             //return Math.Sqrt(rDiff + gDiff + bDiff);
 
             //for lab
-            double[] labA = LabColorConverter.rgb2lab(new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] });
-            double[] labB = LabColorConverter.rgb2lab(new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] });
-
-            double labDIfference = LabColorConverter.deltaE(labA, labB);
+            //double[] labA = LabColorConverter.rgb2lab(new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] });
+            //double[] labB = LabColorConverter.rgb2lab(new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] });
+            //
+            //double labDIfference = LabColorConverter.deltaE(labA, labB);
 
             //System.Diagnostics.Debug.WriteLine("RGBDiff: " + rgbDifference.ToString("0.00") + "  --  LabDiff:" + labDIfference.ToString("0.00"));
 
-            return labDIfference;
+            //return labDIfference;
+
+            double[] colorA = new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] };
+            double[] colorB = new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] };
+
+            return m_colorSheme.Difference(colorA, colorB);
         }
 
         private DisjointSet SegmentOnDisjointSet(double k, double[,,] grayScaleArrayImage, Edge[] edges)

@@ -1,5 +1,6 @@
 ﻿using ImageProcessor;
 using SegmentationBasedOnGraph;
+using SegmentationBasedOnGraph.ColorShemes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -105,9 +106,17 @@ namespace SimpleProcessing
             int k = Convert.ToInt32(KtextBox.Text);
             int min = Convert.ToInt32(MinTextBox.Text);
 
+            IColorSheme colorSheme = null;
+            if (GreyScaleRadioButton.Checked)
+                colorSheme = new GrayScaleColorSheme();
+            if (RgbRadioButton.Checked)
+                colorSheme = new RGBColorSheme();
+            if (LabRadioButton.Checked)
+                colorSheme = new LabColorSheme();
+
             Segment segmentObj = new Segment();
 
-            pictureBox1.Image = segmentObj.DoSegmentation(_image, sigma, k, min);
+            pictureBox1.Image = segmentObj.DoSegmentation(_image, sigma, k, min, colorSheme);
         }
 
         private void button5_Click(object sender, EventArgs e)

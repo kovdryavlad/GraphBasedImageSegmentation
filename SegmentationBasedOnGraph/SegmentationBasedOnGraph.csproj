@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorShemes\LabColorSheme.cs" />
+    <Compile Include="ColorShemes\RgbColorSheme.cs" />
+    <Compile Include="ColorShemes\GrayScaleColorSheme.cs" />
+    <Compile Include="ColorShemes\IColorSheme.cs" />
     <Compile Include="DisjointSet.cs" />
     <Compile Include="Edge.cs" />
     <Compile Include="NeightbourType.cs" />

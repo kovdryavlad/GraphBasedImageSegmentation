@@ -172,6 +172,20 @@ namespace ImageProcessor
 
             return resultImage;
         }
+
+        public static double[,,] GetImageInLab(double[,,] arrayImage)
+        {
+            //перерабоать позже
+
+            return processImage(arrayImage, (c) =>
+            {
+                double[] lab = LabColorConverter.rgb2lab(new[] { c.r, c.g, c.b });
+
+                c.r = lab[0];
+                c.g = lab[1];
+                c.b = lab[2];
+            });
+        }
     }
 
 

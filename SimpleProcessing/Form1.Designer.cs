@@ -55,6 +55,9 @@
             this.KtextBox = new System.Windows.Forms.TextBox();
             this.MinTextBox = new System.Windows.Forms.TextBox();
             this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GreyScaleRadioButton = new System.Windows.Forms.RadioButton();
+            this.RgbRadioButton = new System.Windows.Forms.RadioButton();
+            this.LabRadioButton = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,10 +142,13 @@
             this.tableLayoutPanel2.Controls.Add(this.label6, 1, 8);
             this.tableLayoutPanel2.Controls.Add(this.KtextBox, 2, 7);
             this.tableLayoutPanel2.Controls.Add(this.MinTextBox, 2, 8);
+            this.tableLayoutPanel2.Controls.Add(this.GreyScaleRadioButton, 1, 10);
+            this.tableLayoutPanel2.Controls.Add(this.RgbRadioButton, 1, 11);
+            this.tableLayoutPanel2.Controls.Add(this.LabRadioButton, 1, 12);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(870, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 11;
+            this.tableLayoutPanel2.RowCount = 14;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -150,6 +156,9 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -317,7 +326,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(110, 23);
             this.button4.TabIndex = 11;
-            this.button4.Text = "Сегментация";
+            this.button4.Text = "Сегментувати";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -367,6 +376,38 @@
             this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
             this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
+            // 
+            // GreyScaleRadioButton
+            // 
+            this.GreyScaleRadioButton.AutoSize = true;
+            this.GreyScaleRadioButton.Location = new System.Drawing.Point(95, 319);
+            this.GreyScaleRadioButton.Name = "GreyScaleRadioButton";
+            this.GreyScaleRadioButton.Size = new System.Drawing.Size(74, 17);
+            this.GreyScaleRadioButton.TabIndex = 14;
+            this.GreyScaleRadioButton.Text = "GreyScale";
+            this.GreyScaleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // RgbRadioButton
+            // 
+            this.RgbRadioButton.AutoSize = true;
+            this.RgbRadioButton.Checked = true;
+            this.RgbRadioButton.Location = new System.Drawing.Point(95, 349);
+            this.RgbRadioButton.Name = "RgbRadioButton";
+            this.RgbRadioButton.Size = new System.Drawing.Size(48, 17);
+            this.RgbRadioButton.TabIndex = 14;
+            this.RgbRadioButton.TabStop = true;
+            this.RgbRadioButton.Text = "RGB";
+            this.RgbRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // LabRadioButton
+            // 
+            this.LabRadioButton.AutoSize = true;
+            this.LabRadioButton.Location = new System.Drawing.Point(95, 379);
+            this.LabRadioButton.Name = "LabRadioButton";
+            this.LabRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.LabRadioButton.TabIndex = 14;
+            this.LabRadioButton.Text = "Lab";
+            this.LabRadioButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -422,6 +463,9 @@
         private System.Windows.Forms.TextBox KtextBox;
         private System.Windows.Forms.TextBox MinTextBox;
         private System.Windows.Forms.ToolStripMenuItem зберегтиToolStripMenuItem;
+        private System.Windows.Forms.RadioButton GreyScaleRadioButton;
+        private System.Windows.Forms.RadioButton RgbRadioButton;
+        private System.Windows.Forms.RadioButton LabRadioButton;
     }
 }
 
