@@ -114,7 +114,7 @@ namespace SimpleProcessing
             if (LabRadioButton.Checked)
                 colorSheme = new LabColorSheme();
 
-            Segment segmentObj = new Segment();
+            Segmentation segmentObj = new Segmentation();
 
             pictureBox1.Image = segmentObj.DoSegmentation(_image, sigma, k, min, colorSheme);
         }

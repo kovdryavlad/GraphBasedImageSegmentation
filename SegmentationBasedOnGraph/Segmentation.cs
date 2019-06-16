@@ -4,10 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SegmentationBasedOnGraph
 {
-    public class Segment
+
+    public class Segmentation
     {
         public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
@@ -20,50 +23,69 @@ namespace SegmentationBasedOnGraph
 
         public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
+            //debug
+            System.Diagnostics.Debug.WriteLine("Reading done: " + DateTime.Now);
+
             m_colorSheme = colorSheme;
 
             //препроцессинг иображения
             arrayImage = colorSheme.Convert(arrayImage);
-
+            
+            //debug
+            System.Diagnostics.Debug.WriteLine("color sheme changed: " + DateTime.Now);
             //DebugImageInfo(arrayImage);
 
             //smoothing
             GaussianBlur gaussianBlur = new GaussianBlur();
             double[][] filter = gaussianBlur.getKernel(sigma);
-            arrayImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
+            double[,,] blurredImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
 
+            //debug
+            System.Diagnostics.Debug.WriteLine("Smooting done: " + DateTime.Now);
             //тест размещения преобразования цвета
             //arrayImage = colorSheme.Convert(arrayImage);
 
             //построение графа
-            Edge[] edges = buildGraphByImage(arrayImage)
+            Edge[] edges = buildGraphByImage(blurredImage)
                                 .OrderBy(el => el.w)
                                 .ToArray();
 
+            //debug
+            System.Diagnostics.Debug.WriteLine("graph builded: " + DateTime.Now);
 
             //debugging
-            double minWeight = edges.Min(el => el.w);
-            double maxWeight = edges.Max(el => el.w);
-            Edge[] EdgesMoreThanMin = edges.Where(el => el.w > minWeight + 0.1).ToArray();
-            Edge[] EdgesZeroWidth = edges.Where(el => el.w < 0.01).ToArray();
 
-            Edge[] edgesHor = edges.Where(el => el.neightbourType == NeightbourType.Horizontal).ToArray();
-            Edge[] edgesVer = edges.Where(el => el.neightbourType == NeightbourType.Vertical).ToArray();
-            Edge[] edgesTopDiag = edges.Where(el => el.neightbourType == NeightbourType.TopDiagonal).ToArray();
-            Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
-            
+            System.Diagnostics.Debug.WriteLine("edges total: "+ edges.Length);
+
+            //double minWeight = edges.Min(el => el.w);
+            //double maxWeight = edges.Max(el => el.w);
+            //Edge[] EdgesMoreThanMin = edges.Where(el => el.w > minWeight + 0.1).ToArray();
+            //Edge[] EdgesZeroWidth = edges.Where(el => el.w < 0.01).ToArray();
+            //
+            //Edge[] edgesHor = edges.Where(el => el.neightbourType == NeightbourType.Horizontal).ToArray();
+            //Edge[] edgesVer = edges.Where(el => el.neightbourType == NeightbourType.Vertical).ToArray();
+            //Edge[] edgesTopDiag = edges.Where(el => el.neightbourType == NeightbourType.TopDiagonal).ToArray();
+            //Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
+
             //сегментированный лес непересекающихся деревьев
-            DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);
+            DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);  //картинка тут только для передачи размера потому осталась arrayImage
+            //debug
+            System.Diagnostics.Debug.WriteLine("Segmented: " + DateTime.Now);
 
             //присоеденить маленькие коппоненты к большим
             PostProcessSmallComponents(edges, segmentedSet, minSize);
+
+            //debug
+            System.Diagnostics.Debug.WriteLine("Small Component Merged: " + DateTime.Now);
 
             //присоеденить те, что меньше min_size к соседу по ребру
 
             int height = arrayImage.GetLength(1);
             int width = arrayImage.GetLength(2);
 
-            return SegmentedSetToBitmapConverter.Convert(segmentedSet, height, width);
+            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, height, width);
+            //var a = SegmentedSetConverter.ConvertToRealCoordsSegments(segmentedSet, height, width);
+            //return SegmentedSetConverter.RealCoordsSegmentResultToBitmap(a);
         }
 
         private void PostProcessSmallComponents(Edge[] edges, DisjointSet segmentedSet, int minSize)
@@ -132,33 +154,6 @@ namespace SegmentationBasedOnGraph
 
         private double diff(double[,,] arrayImage, int x1, int y1, int x2, int y2)
         {
-            /*
-            //for monochrome image
-            double I1 = arrayImage[0, y1, x1];
-            double I2 = arrayImage[0, y2, x2];
-
-            return Math.Abs(I1 - I2);
-            */
-
-            // for rgb
-            double rDiff = Math.Pow(arrayImage[0, y1, x1] - arrayImage[0, y2, x2], 2);
-            double gDiff = Math.Pow(arrayImage[1, y1, x1] - arrayImage[1, y2, x2], 2);
-            double bDiff = Math.Pow(arrayImage[2, y1, x1] - arrayImage[2, y2, x2], 2);
-
-            double rgbDifference = Math.Sqrt(rDiff + gDiff + bDiff);
-
-            //return Math.Sqrt(rDiff + gDiff + bDiff);
-
-            //for lab
-            //double[] labA = LabColorConverter.rgb2lab(new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] });
-            //double[] labB = LabColorConverter.rgb2lab(new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] });
-            //
-            //double labDIfference = LabColorConverter.deltaE(labA, labB);
-
-            //System.Diagnostics.Debug.WriteLine("RGBDiff: " + rgbDifference.ToString("0.00") + "  --  LabDiff:" + labDIfference.ToString("0.00"));
-
-            //return labDIfference;
-
             double[] colorA = new[] { arrayImage[0, y1, x1], arrayImage[1, y1, x1], arrayImage[2, y1, x1] };
             double[] colorB = new[] { arrayImage[0, y2, x2], arrayImage[1, y2, x2], arrayImage[2, y2, x2] };
 
@@ -181,6 +176,9 @@ namespace SegmentationBasedOnGraph
             // for each edge, in non-decreasing weight order...
             for (int i = 0; i < edges.Length; i++)
             {
+                if(i%100000==0)
+                    System.Diagnostics.Debug.WriteLine("itaration: " + i);
+
                 Edge edge = edges[i];
 
                 // components conected by this edge
