@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вернутьсяКИсходномуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.KtextBox = new System.Windows.Forms.TextBox();
             this.MinTextBox = new System.Windows.Forms.TextBox();
-            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GreyScaleRadioButton = new System.Windows.Forms.RadioButton();
             this.RgbRadioButton = new System.Windows.Forms.RadioButton();
             this.LabRadioButton = new System.Windows.Forms.RadioButton();
@@ -92,6 +92,13 @@
             this.вернутьсяКИсходномуToolStripMenuItem.Size = new System.Drawing.Size(180, 20);
             this.вернутьсяКИсходномуToolStripMenuItem.Text = "Повернутися до початкового";
             this.вернутьсяКИсходномуToolStripMenuItem.Click += new System.EventHandler(this.вернутьсяКИсходномуToolStripMenuItem_Click);
+            // 
+            // зберегтиToolStripMenuItem
+            // 
+            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -369,13 +376,6 @@
             this.MinTextBox.Size = new System.Drawing.Size(30, 20);
             this.MinTextBox.TabIndex = 10;
             this.MinTextBox.Text = "100";
-            // 
-            // зберегтиToolStripMenuItem
-            // 
-            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.зберегтиToolStripMenuItem.Text = "Зберегти";
-            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // GreyScaleRadioButton
             // 
