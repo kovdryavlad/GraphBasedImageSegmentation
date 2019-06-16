@@ -38,7 +38,7 @@ namespace SegmentationBasedOnGraph
             //smoothing
             GaussianBlur gaussianBlur = new GaussianBlur();
             double[][] filter = gaussianBlur.getKernel(sigma);
-            arrayImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
+            double[,,] blurredImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
 
             //debug
             System.Diagnostics.Debug.WriteLine("Smooting done: " + DateTime.Now);
@@ -46,7 +46,7 @@ namespace SegmentationBasedOnGraph
             //arrayImage = colorSheme.Convert(arrayImage);
 
             //построение графа
-            Edge[] edges = buildGraphByImage(arrayImage)
+            Edge[] edges = buildGraphByImage(blurredImage)
                                 .OrderBy(el => el.w)
                                 .ToArray();
 
@@ -68,7 +68,7 @@ namespace SegmentationBasedOnGraph
             //Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
 
             //сегментированный лес непересекающихся деревьев
-            DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);
+            DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);  //картинка тут только для передачи размера потому осталась arrayImage
             //debug
             System.Diagnostics.Debug.WriteLine("Segmented: " + DateTime.Now);
 
@@ -84,6 +84,8 @@ namespace SegmentationBasedOnGraph
             int width = arrayImage.GetLength(2);
 
             return SegmentedSetConverter.ConvertToBitmap(segmentedSet, height, width);
+            //var a = SegmentedSetConverter.ConvertToRealCoordsSegments(segmentedSet, height, width);
+            //return SegmentedSetConverter.RealCoordsSegmentResultToBitmap(a);
         }
 
         private void PostProcessSmallComponents(Edge[] edges, DisjointSet segmentedSet, int minSize)

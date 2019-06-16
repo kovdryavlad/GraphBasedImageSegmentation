@@ -77,7 +77,7 @@ namespace SegmentationBasedOnGraph
                                   .ToArray();
         }
 
-        public static RealCoordsSegmentResult ConvertToRealCoordsSegments(DisjointSet segmentedSet, int height, int width, double[,,] arrayImage, IColorSheme colorSheme)
+        public static RealCoordsSegmentResult ConvertToRealCoordsSegments(DisjointSet segmentedSet, int height, int width)
         {
             Dictionary<int, List<Point>> segmentsDictionary = new Dictionary<int, List<Point>>();
 
@@ -110,7 +110,7 @@ namespace SegmentationBasedOnGraph
             };
         }
 
-        public Bitmap RealCoordsSegmentResultToBitmap(RealCoordsSegmentResult r)
+        public static  Bitmap RealCoordsSegmentResultToBitmap(RealCoordsSegmentResult r)
         {
             double[,,] im = new double[3, r.imageheight, r.imageWidth];
 
