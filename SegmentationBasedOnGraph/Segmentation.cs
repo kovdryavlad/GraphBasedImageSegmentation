@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace SegmentationBasedOnGraph
 {
 
-    public class Segment
+    public class Segmentation
     {
         public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
@@ -83,7 +83,7 @@ namespace SegmentationBasedOnGraph
             int height = arrayImage.GetLength(1);
             int width = arrayImage.GetLength(2);
 
-            return SegmentedSetToBitmapConverter.Convert(segmentedSet, height, width);
+            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, height, width);
         }
 
         private void PostProcessSmallComponents(Edge[] edges, DisjointSet segmentedSet, int minSize)
