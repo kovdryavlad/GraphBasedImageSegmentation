@@ -17,7 +17,9 @@ namespace SimpleProcessing
 {
     public partial class Form1 : Form
     {
-        double[,,] _image;
+        double[,,] m_originalImage;
+        double[,,] m_workImage;
+
         string m_imageName;
 
         public Form1()
@@ -35,7 +37,8 @@ namespace SimpleProcessing
             if (openFileWindow.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bmp = new Bitmap(openFileWindow.FileName);
-                _image = BitmapConverter.BitmapToDoubleRgb(bmp);
+                m_workImage = BitmapConverter.BitmapToDoubleRgb(bmp);
+                m_originalImage = (double[,,])m_workImage.Clone();
 
                 m_imageName = Path.GetFileNameWithoutExtension(openFileWindow.FileName);
 
@@ -51,38 +54,38 @@ namespace SimpleProcessing
             int value = trackBar1.Value;
             BrightnessTextBox.Text = value.ToString();
 
-            double[,,] image = DoubleArrayImageOperations.ChangeBrightness(_image, value);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            m_workImage = DoubleArrayImageOperations.ChangeBrightness(m_workImage, value);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double[,,] image = DoubleArrayImageOperations.Negative(_image);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            //double[,,] image = DoubleArrayImageOperations.Negative(m_originalImage);
+            //pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
         }
 
         private void BlackWhitetrackBar_Scroll(object sender, EventArgs e)
         {
-            int value = BlackWhitetrackBar.Value;
-            BlackWhitetextBox.Text = value.ToString();
-
-            double[,,] image = DoubleArrayImageOperations.GetWhiteBlack(_image, value);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            //int value = BlackWhitetrackBar.Value;
+            //BlackWhitetextBox.Text = value.ToString();
+            //
+            //double[,,] image = DoubleArrayImageOperations.GetWhiteBlack(m_originalImage, value);
+            //pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
         }
 
         //оттенки серого
         private void button2_Click(object sender, EventArgs e)
         {
-            double[,,] image = DoubleArrayImageOperations.GetGrayScale(_image);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            m_workImage = DoubleArrayImageOperations.GetGrayScale(m_workImage);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
 
         }
 
         //сепия
         private void button3_Click_1(object sender, EventArgs e)
         {
-            double[,,] image = DoubleArrayImageOperations.Sepia(_image);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            //double[,,] image = DoubleArrayImageOperations.Sepia(m_originalImage);
+            //pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
         }
 
         //контраст
@@ -91,13 +94,14 @@ namespace SimpleProcessing
             int value = ContrastTrackBar.Value;
             ContrastTextBox.Text = value.ToString();
 
-            double[,,] image = DoubleArrayImageOperations.contrast(_image, 1+value/100d);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            m_workImage = DoubleArrayImageOperations.contrast(m_workImage, 1+value/100d);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
         }
 
         private void вернутьсяКИсходномуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(_image);
+            m_workImage = (double[,,])m_originalImage.Clone();
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -116,7 +120,7 @@ namespace SimpleProcessing
 
             Segmentation segmentObj = new Segmentation();
 
-            pictureBox1.Image = segmentObj.DoSegmentation(_image, sigma, k, min, colorSheme);
+            pictureBox1.Image = segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -126,8 +130,8 @@ namespace SimpleProcessing
             GaussianBlur gaussianBlur = new GaussianBlur();
             double[][] filter = gaussianBlur.getKernel(sigma);
 
-            double[,,] image = DoubleArrayImageOperations.ConvolutionFilter(_image, filter);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(image);
+            m_workImage = DoubleArrayImageOperations.ConvolutionFilter(m_workImage, filter);
+            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
         }
 
         private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)

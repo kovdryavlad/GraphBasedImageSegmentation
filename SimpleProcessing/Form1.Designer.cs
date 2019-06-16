@@ -344,9 +344,9 @@
             this.GreyScaleRadioButton.AutoSize = true;
             this.GreyScaleRadioButton.Location = new System.Drawing.Point(95, 319);
             this.GreyScaleRadioButton.Name = "GreyScaleRadioButton";
-            this.GreyScaleRadioButton.Size = new System.Drawing.Size(74, 17);
+            this.GreyScaleRadioButton.Size = new System.Drawing.Size(99, 17);
             this.GreyScaleRadioButton.TabIndex = 14;
-            this.GreyScaleRadioButton.Text = "GreyScale";
+            this.GreyScaleRadioButton.Text = "Відтінки сірого";
             this.GreyScaleRadioButton.UseVisualStyleBackColor = true;
             // 
             // RgbRadioButton
