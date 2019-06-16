@@ -111,6 +111,8 @@ namespace SimpleProcessing
             OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
         }
 
+        Bitmap segmented;
+
         private void button4_Click(object sender, EventArgs e)
         {
             double sigma = Convert.ToDouble(sigmaTextBox.Text.Replace(".", ","));
@@ -127,7 +129,8 @@ namespace SimpleProcessing
 
             Segmentation segmentObj = new Segmentation();
 
-            OutputBitmapOnPictureBox(segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme));
+            segmented = segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme);
+            OutputBitmapOnPictureBox(segmented);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -152,7 +155,7 @@ namespace SimpleProcessing
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                pictureBox1.Image.Save(sfd.FileName);
+                segmented.Save(sfd.FileName);
             }
         }
 
@@ -210,19 +213,19 @@ namespace SimpleProcessing
             ResetScrollsBarsValues();
         }
 
-        Image segmented;
+        Image remebmered;
         private void перемикачАБэToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (segmented == null)
+            if (remebmered == null)
             {
-                segmented = pictureBox1.Image;
+                remebmered = pictureBox1.Image;
                 OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
             }
 
             else
             {
-                pictureBox1.Image = segmented;
-                segmented = null;
+                pictureBox1.Image = remebmered;
+                remebmered = null;
             }
         }
     }
