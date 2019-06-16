@@ -57,6 +57,8 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.BrightnessTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.іншеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +73,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem,
             this.вернутьсяКИсходномуToolStripMenuItem,
-            this.зберегтиToolStripMenuItem});
+            this.зберегтиToolStripMenuItem,
+            this.іншеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
@@ -116,11 +119,13 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(616, 423);
+            this.pictureBox1.Size = new System.Drawing.Size(861, 532);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.SizeChanged += new System.EventHandler(this.pictureBox1_SizeChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -400,6 +405,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Яскравість:";
             // 
+            // іншеToolStripMenuItem
+            // 
+            this.іншеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem});
+            this.іншеToolStripMenuItem.Name = "іншеToolStripMenuItem";
+            this.іншеToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.іншеToolStripMenuItem.Text = "Інше";
+            // 
+            // прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem
+            // 
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Name = "прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem";
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Text = "Прийняти яскравість та контрастність за 0";
+            this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Click += new System.EventHandler(this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +476,8 @@
         private System.Windows.Forms.RadioButton RgbRadioButton;
         private System.Windows.Forms.RadioButton LabRadioButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem іншеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem;
     }
 }
 

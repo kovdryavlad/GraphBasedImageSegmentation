@@ -59,6 +59,7 @@
     <Compile Include="GaussianBlur.cs" />
     <Compile Include="DoubleArrayImageOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

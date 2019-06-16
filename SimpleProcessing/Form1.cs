@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace SimpleProcessing
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ResetScrollsBarsValues();
+
             OpenFileDialog openFileWindow = new OpenFileDialog();
             if (openFileWindow.ShowDialog() == DialogResult.OK)
             {
@@ -40,11 +43,14 @@ namespace SimpleProcessing
                 m_workImage = BitmapConverter.BitmapToDoubleRgb(bmp);
                 m_originalImage = (double[,,])m_workImage.Clone();
 
+
                 m_imageName = Path.GetFileNameWithoutExtension(openFileWindow.FileName);
 
-                pictureBox1.Width = bmp.Width;
-                pictureBox1.Height = bmp.Height;
-                pictureBox1.Image = bmp;
+                //pictureBox1.Width = bmp.Width;
+                //pictureBox1.Height = bmp.Height;
+                //pictureBox1.Image = bmp;
+
+                OutputBitmapOnPictureBox(bmp);
             }            
         }
 
@@ -100,6 +106,7 @@ namespace SimpleProcessing
 
         private void вернутьсяКИсходномуToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ResetScrollsBarsValues();
             m_workImage = (double[,,])m_originalImage.Clone();
             pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
         }
@@ -143,11 +150,64 @@ namespace SimpleProcessing
                 
             };
 
-
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image.Save(sfd.FileName);
             }
+        }
+
+        private void pictureBox1_SizeChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"width: {pictureBox1.Width} - height: {pictureBox1.Height}");
+        }
+
+        void OutputBitmapOnPictureBox(Bitmap image)
+        {
+            double Wreal = image.Width;
+            double Hreal = image.Height;
+
+            if (Wreal > pictureBox1.Width || Hreal > pictureBox1.Height)
+            {
+
+                double Wmax = pictureBox1.Width;
+                double Hmax = pictureBox1.Height;
+
+                double l = Hreal / Wreal;
+
+                int scaledWidth = (int)Wmax;
+                int scaledHeight = (int)Hmax;
+
+                if (Wreal / Wmax > Hreal / Hmax)
+                    scaledHeight = (int)(Wmax * l);
+
+                else
+                    scaledWidth = (int)(Hmax / l);
+
+                pictureBox1.Image = Service.ResizeImage(image, scaledWidth, scaledHeight);
+            }
+
+            else
+            {
+                pictureBox1.Image = image;
+            }
+        }
+
+        void ResetScrollsBarsValues()
+        {
+            trackBar1.Scroll -= trackBar1_Scroll;
+            trackBar1.Value = 0;
+            BrightnessTextBox.Text = "";
+            trackBar1.Scroll += trackBar1_Scroll;
+
+            ContrastTrackBar.Scroll -= ContrastTrackBar_Scroll;
+            ContrastTrackBar.Value = 0;
+            ContrastTextBox.Text = "";
+            ContrastTrackBar.Scroll += ContrastTrackBar_Scroll;
+        }
+
+        private void прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetScrollsBarsValues();
         }
     }
 }
