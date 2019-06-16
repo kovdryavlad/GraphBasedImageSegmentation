@@ -31,18 +31,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вернутьсяКИсходномуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BrightnessTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.BlackWhitetrackBar = new System.Windows.Forms.TrackBar();
             this.BlackWhitetextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.ContrastTrackBar = new System.Windows.Forms.TrackBar();
             this.ContrastTextBox = new System.Windows.Forms.TextBox();
@@ -54,17 +51,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.KtextBox = new System.Windows.Forms.TextBox();
             this.MinTextBox = new System.Windows.Forms.TextBox();
-            this.зберегтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GreyScaleRadioButton = new System.Windows.Forms.RadioButton();
             this.RgbRadioButton = new System.Windows.Forms.RadioButton();
             this.LabRadioButton = new System.Windows.Forms.RadioButton();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.BrightnessTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlackWhitetrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContrastTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,6 +91,13 @@
             this.вернутьсяКИсходномуToolStripMenuItem.Size = new System.Drawing.Size(180, 20);
             this.вернутьсяКИсходномуToolStripMenuItem.Text = "Повернутися до початкового";
             this.вернутьсяКИсходномуToolStripMenuItem.Click += new System.EventHandler(this.вернутьсяКИсходномуToolStripMenuItem_Click);
+            // 
+            // зберегтиToolStripMenuItem
+            // 
+            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -122,15 +128,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.09524F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.Controls.Add(this.trackBar1, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.BrightnessTextBox, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.button1, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.BlackWhitetrackBar, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.BlackWhitetextBox, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.button2, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.button3, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTrackBar, 1, 5);
             this.tableLayoutPanel2.Controls.Add(this.ContrastTextBox, 2, 5);
@@ -145,6 +147,9 @@
             this.tableLayoutPanel2.Controls.Add(this.GreyScaleRadioButton, 1, 10);
             this.tableLayoutPanel2.Controls.Add(this.RgbRadioButton, 1, 11);
             this.tableLayoutPanel2.Controls.Add(this.LabRadioButton, 1, 12);
+            this.tableLayoutPanel2.Controls.Add(this.trackBar1, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.BrightnessTextBox, 2, 4);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(870, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -166,36 +171,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 532);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(95, 3);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Minimum = -100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(110, 29);
-            this.trackBar1.TabIndex = 1;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Яркость:";
-            // 
-            // BrightnessTextBox
-            // 
-            this.BrightnessTextBox.Location = new System.Drawing.Point(211, 8);
-            this.BrightnessTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
-            this.BrightnessTextBox.Name = "BrightnessTextBox";
-            this.BrightnessTextBox.Size = new System.Drawing.Size(30, 20);
-            this.BrightnessTextBox.TabIndex = 2;
-            // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -205,6 +180,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Негатив";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BlackWhitetrackBar
@@ -216,6 +192,7 @@
             this.BlackWhitetrackBar.Size = new System.Drawing.Size(110, 29);
             this.BlackWhitetrackBar.TabIndex = 1;
             this.BlackWhitetrackBar.Value = 1;
+            this.BlackWhitetrackBar.Visible = false;
             this.BlackWhitetrackBar.Scroll += new System.EventHandler(this.BlackWhitetrackBar_Scroll);
             // 
             // BlackWhitetextBox
@@ -225,6 +202,7 @@
             this.BlackWhitetextBox.Name = "BlackWhitetextBox";
             this.BlackWhitetextBox.Size = new System.Drawing.Size(30, 20);
             this.BlackWhitetextBox.TabIndex = 4;
+            this.BlackWhitetextBox.Visible = false;
             // 
             // label2
             // 
@@ -236,6 +214,7 @@
             this.label2.Size = new System.Drawing.Size(86, 29);
             this.label2.TabIndex = 5;
             this.label2.Text = "Порог ср. для черно белого";
+            this.label2.Visible = false;
             // 
             // button2
             // 
@@ -246,18 +225,8 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Оттенки серого";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Location = new System.Drawing.Point(95, 133);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 24);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Сепия";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label3
             // 
@@ -316,7 +285,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 21);
             this.button5.TabIndex = 13;
-            this.button5.Text = "размыть";
+            this.button5.Text = "Розмити";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -370,13 +339,6 @@
             this.MinTextBox.TabIndex = 10;
             this.MinTextBox.Text = "100";
             // 
-            // зберегтиToolStripMenuItem
-            // 
-            this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.зберегтиToolStripMenuItem.Text = "Зберегти";
-            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
-            // 
             // GreyScaleRadioButton
             // 
             this.GreyScaleRadioButton.AutoSize = true;
@@ -409,6 +371,35 @@
             this.LabRadioButton.Text = "Lab";
             this.LabRadioButton.UseVisualStyleBackColor = true;
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(95, 133);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Minimum = -100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(110, 24);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // BrightnessTextBox
+            // 
+            this.BrightnessTextBox.Location = new System.Drawing.Point(211, 138);
+            this.BrightnessTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
+            this.BrightnessTextBox.Name = "BrightnessTextBox";
+            this.BrightnessTextBox.Size = new System.Drawing.Size(30, 20);
+            this.BrightnessTextBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 136);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Яскравість:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,9 +417,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BlackWhitetrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ContrastTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,14 +433,12 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox BrightnessTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TrackBar BlackWhitetrackBar;
         private System.Windows.Forms.TextBox BlackWhitetextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar ContrastTrackBar;
         private System.Windows.Forms.TextBox ContrastTextBox;
@@ -466,6 +455,7 @@
         private System.Windows.Forms.RadioButton GreyScaleRadioButton;
         private System.Windows.Forms.RadioButton RgbRadioButton;
         private System.Windows.Forms.RadioButton LabRadioButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

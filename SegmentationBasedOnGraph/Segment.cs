@@ -4,12 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SegmentationBasedOnGraph
 {
-
     public class Segment
     {
         public Bitmap DoSegmentation(Bitmap bmp, double sigma, double k, int minSize, IColorSheme colorSheme)
