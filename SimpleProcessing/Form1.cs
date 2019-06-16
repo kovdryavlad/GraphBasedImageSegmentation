@@ -61,7 +61,7 @@ namespace SimpleProcessing
             BrightnessTextBox.Text = value.ToString();
 
             m_workImage = DoubleArrayImageOperations.ChangeBrightness(m_workImage, value);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
+            OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace SimpleProcessing
         private void button2_Click(object sender, EventArgs e)
         {
             m_workImage = DoubleArrayImageOperations.GetGrayScale(m_workImage);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
+            OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
 
         }
 
@@ -101,14 +101,14 @@ namespace SimpleProcessing
             ContrastTextBox.Text = value.ToString();
 
             m_workImage = DoubleArrayImageOperations.contrast(m_workImage, 1+value/100d);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
+            OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
         }
 
         private void вернутьсяКИсходномуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetScrollsBarsValues();
             m_workImage = (double[,,])m_originalImage.Clone();
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
+            OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace SimpleProcessing
 
             Segmentation segmentObj = new Segmentation();
 
-            pictureBox1.Image = segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme);
+            OutputBitmapOnPictureBox(segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme));
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace SimpleProcessing
             double[][] filter = gaussianBlur.getKernel(sigma);
 
             m_workImage = DoubleArrayImageOperations.ConvolutionFilter(m_workImage, filter);
-            pictureBox1.Image = BitmapConverter.DoubleRgbToBitmap(m_workImage);
+            OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
         }
 
         private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +208,22 @@ namespace SimpleProcessing
         private void прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetScrollsBarsValues();
+        }
+
+        Image segmented;
+        private void перемикачАБэToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (segmented == null)
+            {
+                segmented = pictureBox1.Image;
+                OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
+            }
+
+            else
+            {
+                pictureBox1.Image = segmented;
+                segmented = null;
+            }
         }
     }
 }

@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.іншеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.перемикачАБэToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,7 +75,8 @@
             this.открытьToolStripMenuItem,
             this.вернутьсяКИсходномуToolStripMenuItem,
             this.зберегтиToolStripMenuItem,
-            this.іншеToolStripMenuItem});
+            this.іншеToolStripMenuItem,
+            this.перемикачАБэToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
@@ -420,6 +422,13 @@
             this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Text = "Прийняти яскравість та контрастність за 0";
             this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem.Click += new System.EventHandler(this.прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem_Click);
             // 
+            // перемикачАБэToolStripMenuItem
+            // 
+            this.перемикачАБэToolStripMenuItem.Name = "перемикачАБэToolStripMenuItem";
+            this.перемикачАБэToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.перемикачАБэToolStripMenuItem.Text = "Перемикач АБ";
+            this.перемикачАБэToolStripMenuItem.Click += new System.EventHandler(this.перемикачАБэToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +487,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem іншеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem прийнятиЯскравістьТаКонтрастністьЗа0ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem перемикачАБэToolStripMenuItem;
     }
 }
 
