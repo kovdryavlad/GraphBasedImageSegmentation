@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assessments.cs" />
+    <Compile Include="Assessments\AssessmentBase.cs" />
+    <Compile Include="Assessments\Assessments.cs" />
+    <Compile Include="Assessments\SumOfTheInternalDispersions.cs" />
     <Compile Include="ColorShemes\LabColorSheme.cs" />
     <Compile Include="ColorShemes\RgbColorSheme.cs" />
     <Compile Include="ColorShemes\GrayScaleColorSheme.cs" />

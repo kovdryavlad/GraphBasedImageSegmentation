@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace SegmentationBasedOnGraph
+namespace SegmentationBasedOnGraph.Assessments
 {
     class Assessments
     {

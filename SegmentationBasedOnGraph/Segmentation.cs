@@ -20,9 +20,18 @@ namespace SegmentationBasedOnGraph
         }
 
         IColorSheme m_colorSheme;
+        DisjointSet m_segmentedSet;
+
+        int m_height;
+        int m_width;
+
+        double[,,] m_arrayImageCopy;    //для оцениывания, копирование сюда происходит после смены цветовой схемы
 
         public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
+            m_height = arrayImage.GetLength(1);
+            m_width = arrayImage.GetLength(2);
+
             //debug
             System.Diagnostics.Debug.WriteLine("Reading done: " + DateTime.Now);
 
@@ -30,7 +39,10 @@ namespace SegmentationBasedOnGraph
 
             //препроцессинг иображения
             arrayImage = colorSheme.Convert(arrayImage);
-            
+
+            //сохранение для проведения оценки качества сегментации
+            m_arrayImageCopy = (double[,,])arrayImage.Clone();
+
             //debug
             System.Diagnostics.Debug.WriteLine("color sheme changed: " + DateTime.Now);
             //DebugImageInfo(arrayImage);
@@ -68,22 +80,20 @@ namespace SegmentationBasedOnGraph
             //Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
 
             //сегментированный лес непересекающихся деревьев
-            DisjointSet segmentedSet = SegmentOnDisjointSet(k, arrayImage, edges);  //картинка тут только для передачи размера потому осталась arrayImage
+            DisjointSet segmentedSet = SegmentOnDisjointSet(k, m_height*m_width, edges);  //картинка тут только для передачи размера потому осталась arrayImage
+            //запоминание в поле для проведения оценки
+            m_segmentedSet = segmentedSet;
+
             //debug
             System.Diagnostics.Debug.WriteLine("Segmented: " + DateTime.Now);
 
-            //присоеденить маленькие коппоненты к большим
+            //присоеденить те, что меньше min_size к соседу по ребру
             PostProcessSmallComponents(edges, segmentedSet, minSize);
 
             //debug
             System.Diagnostics.Debug.WriteLine("Small Component Merged: " + DateTime.Now);
 
-            //присоеденить те, что меньше min_size к соседу по ребру
-
-            int height = arrayImage.GetLength(1);
-            int width = arrayImage.GetLength(2);
-
-            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, height, width);
+            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, m_height, m_width);
             //var a = SegmentedSetConverter.ConvertToRealCoordsSegments(segmentedSet, height, width);
             //return SegmentedSetConverter.RealCoordsSegmentResultToBitmap(a);
         }
@@ -160,10 +170,8 @@ namespace SegmentationBasedOnGraph
             return m_colorSheme.Difference(colorA, colorB);
         }
 
-        private DisjointSet SegmentOnDisjointSet(double k, double[,,] grayScaleArrayImage, Edge[] edges)
+        private DisjointSet SegmentOnDisjointSet(double k, int vertices, Edge[] edges)
         {
-            int vertices = grayScaleArrayImage.GetLength(1) * grayScaleArrayImage.GetLength(2);
-
             DisjointSet disjointSet = new DisjointSet(vertices);
 
             //начальные значения устанавливаются в k, поскольку по формулам должно быть k/claster_size
@@ -216,6 +224,11 @@ namespace SegmentationBasedOnGraph
                     System.Diagnostics.Debug.WriteLine(s);
                 }
             }
+        }
+
+        public void CalcAssessments() 
+        {
+         //   AssesmentsSegment[] ConvertToAssessmentSegments
         }
     }
 }
