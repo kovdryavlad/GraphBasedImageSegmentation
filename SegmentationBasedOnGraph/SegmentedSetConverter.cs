@@ -12,7 +12,7 @@ namespace SegmentationBasedOnGraph
 {
     class SegmentedSetConverter
     {
-        public static Bitmap ConvertToBitmap(DisjointSet segmentedSet, int height, int width)
+        public static Bitmap ConvertToBitmap(DisjointSet segmentedSet, int height, int width, out int segmentsCount)
         {
             double[,,] im = new double[3, height, width];
 
@@ -47,7 +47,7 @@ namespace SegmentationBasedOnGraph
             System.Diagnostics.Debug.WriteLine("Total Size: " + totalSize);
             System.Diagnostics.Debug.WriteLine("Height*Width: " + height * width);
 
-
+            segmentsCount = colors.Count;
             return BitmapConverter.DoubleRgbToBitmap(im);
         }
 
@@ -68,7 +68,7 @@ namespace SegmentationBasedOnGraph
                         segments.Add(comp, currentSegmentPointsList);
                     }
 
-                    currentSegmentPointsList.Add(new double[] {arrayImage[0,h,w], arrayImage[1, h, w], arrayImage[0, h, w]});
+                    currentSegmentPointsList.Add(new double[] {arrayImage[0,h,w], arrayImage[1, h, w], arrayImage[2, h, w]});
                 }
             }
             

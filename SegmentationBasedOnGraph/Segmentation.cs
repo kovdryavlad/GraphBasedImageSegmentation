@@ -1,5 +1,7 @@
 ﻿using ImageProcessor;
+using SegmentationBasedOnGraph.Assessments;
 using SegmentationBasedOnGraph.ColorShemes;
+using SegmentationBasedOnGraph.ResultSegments;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,6 +28,8 @@ namespace SegmentationBasedOnGraph
         int m_width;
 
         double[,,] m_arrayImageCopy;    //для оцениывания, копирование сюда происходит после смены цветовой схемы
+
+        public int m_componentLength;
 
         public Bitmap DoSegmentation(double[,,] arrayImage, double sigma, double k, int minSize, IColorSheme colorSheme)
         {
@@ -93,7 +97,7 @@ namespace SegmentationBasedOnGraph
             //debug
             System.Diagnostics.Debug.WriteLine("Small Component Merged: " + DateTime.Now);
 
-            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, m_height, m_width);
+            return SegmentedSetConverter.ConvertToBitmap(segmentedSet, m_height, m_width, out m_componentLength);
             //var a = SegmentedSetConverter.ConvertToRealCoordsSegments(segmentedSet, height, width);
             //return SegmentedSetConverter.RealCoordsSegmentResultToBitmap(a);
         }
@@ -226,9 +230,26 @@ namespace SegmentationBasedOnGraph
             }
         }
 
-        public void CalcAssessments() 
+        public string CalcAssessments() 
         {
-         //   AssesmentsSegment[] ConvertToAssessmentSegments
+            System.Diagnostics.Debug.WriteLine("===Начало оценивания качества сегментации==="+ DateTime.Now);
+
+            string s = string.Empty;
+
+            AssesmentsSegment[] segments = SegmentedSetConverter.ConvertToAssessmentSegments(m_segmentedSet, m_height, m_width, m_arrayImageCopy, m_colorSheme);
+
+            AssessmentBase[] assesments = AssessmentsHelper.GetAllAssessments();
+            for (int i = 0; i < assesments.Length; i++)
+            {
+                assesments[i].name = $"Оцінка {i}";
+                double value = assesments[i].GeAssessment(segments, m_colorSheme);
+
+                s += $"{assesments[i].name}: {value.ToString("0.0000")}"+Environment.NewLine;
+
+                System.Diagnostics.Debug.WriteLine($"Оценка 1 готова. "+ DateTime.Now);
+            }
+
+            return s;
         }
     }
 }

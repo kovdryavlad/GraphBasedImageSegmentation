@@ -115,6 +115,8 @@ namespace SimpleProcessing
 
         private void button4_Click(object sender, EventArgs e)
         {
+            textBox1.Text = String.Empty;
+
             double sigma = Convert.ToDouble(sigmaTextBox.Text.Replace(".", ","));
             int k = Convert.ToInt32(KtextBox.Text);
             int min = Convert.ToInt32(MinTextBox.Text);
@@ -131,6 +133,12 @@ namespace SimpleProcessing
 
             segmented = segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme);
             OutputBitmapOnPictureBox(segmented);
+
+            //вывод в текстбокс
+            textBox1.Text += $"Сегментів: {segmentObj.m_componentLength}"+Environment.NewLine;
+
+            if (AssessmentCheckBox.Checked)
+                textBox1.Text += segmentObj.CalcAssessments(); 
         }
 
         private void button5_Click(object sender, EventArgs e)

@@ -12,5 +12,11 @@ namespace SegmentationBasedOnGraph.ColorShemes
         public double[,,] Convert(double[,,] arrayImage) => DoubleArrayImageOperations.GetGrayScale(arrayImage);
 
         public double Difference(double[] colorA, double[] colorB)=>Math.Abs(colorA[0] - colorB[0]);
+
+        //public double AssessmentsDifference(double[] colorA, double[] colorB)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
     }
 }

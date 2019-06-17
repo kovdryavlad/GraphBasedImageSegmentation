@@ -12,5 +12,11 @@ namespace SegmentationBasedOnGraph.ColorShemes
         public double[,,] Convert(double[,,] arrayImage) => DoubleArrayImageOperations.GetImageInLab(arrayImage);
 
         public double Difference(double[] colorA, double[] colorB) => LabColorConverter.deltaE(colorA, colorB);
+
+        //public double AssessmentsDifference(double[] colorA, double[] colorB)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
     }
 }

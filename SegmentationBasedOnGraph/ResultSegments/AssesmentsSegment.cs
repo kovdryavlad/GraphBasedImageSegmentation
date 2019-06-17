@@ -14,7 +14,12 @@ namespace SegmentationBasedOnGraph.ResultSegments
 
         public AssesmentsSegment(List<double[]> points)
         {
-            SimpleMatrix.Matrix a= new SimpleMatrix.Matrix(2);
+            this.points = points;
+
+            SimpleMatrix.Matrix a = new SimpleMatrix.Matrix(points.ToArray());
+            center = a.Transpose().data.Select(dim => dim.Average()).ToArray();
         }
+
+        public int Length => points.Count;
     }
 }

@@ -52,7 +52,11 @@
   <ItemGroup>
     <Compile Include="Assessments\AssessmentBase.cs" />
     <Compile Include="Assessments\Assessments.cs" />
-    <Compile Include="Assessments\SumOfTheInternalDispersions.cs" />
+    <Compile Include="Assessments\AssessmentsHelper.cs" />
+    <Compile Include="Assessments\RatiOfFunctionalsAssessments.cs" />
+    <Compile Include="Assessments\SumOfPairwiseInternalDistancesAssessment.cs" />
+    <Compile Include="Assessments\SumOfTheInternalDispersionsAssessment.cs" />
+    <Compile Include="Assessments\TotalIntroClusterDispersionAssessment.cs" />
     <Compile Include="ColorShemes\LabColorSheme.cs" />
     <Compile Include="ColorShemes\RgbColorSheme.cs" />
     <Compile Include="ColorShemes\GrayScaleColorSheme.cs" />
