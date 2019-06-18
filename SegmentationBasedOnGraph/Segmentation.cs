@@ -246,7 +246,7 @@ namespace SegmentationBasedOnGraph
 
                 s += $"{assesments[i].name}: {value.ToString("0.0000")}"+Environment.NewLine;
 
-                System.Diagnostics.Debug.WriteLine($"Оценка 1 готова. "+ DateTime.Now);
+                System.Diagnostics.Debug.WriteLine($"Оценка {i} готова. "+ DateTime.Now);
             }
 
             return s;

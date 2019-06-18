@@ -10,6 +10,6 @@ namespace SegmentationBasedOnGraph.ColorShemes
     {
         double[,,] Convert(double[,,] arrayImage);
         double Difference(double[] colorA, double[] colorB);
-        //double AssessmentsDifference(double[] colorA, double[] colorB);
+        double AssessmentsDifference(double[] colorA, double[] colorB);
     }
 }

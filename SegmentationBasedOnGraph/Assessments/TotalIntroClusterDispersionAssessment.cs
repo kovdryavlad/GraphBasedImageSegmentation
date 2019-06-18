@@ -20,14 +20,21 @@ namespace SegmentationBasedOnGraph.Assessments
             for (int i = 0; i < k; i++)
             {
                 AssesmentsSegment current = segments[i];
-                sumMatrix += current.Length * GetMatrixOfCovariations(current);
+                sumMatrix += current.Length * GetMatrixOfCovariations(current, colorSheme);
             }
 
             return sumMatrix.Determinant();
         }
 
-        private Matrix GetMatrixOfCovariations(AssesmentsSegment segment)
+        private Matrix GetMatrixOfCovariations(AssesmentsSegment segment, IColorSheme colorSheme)
         {
+            Func<double, double, int, double> d = null;
+
+            if (colorSheme is GrayScaleColorSheme || colorSheme is RGBColorSheme)
+                d = (p1, p2, dim) => (p1 - p2) / 255d;
+            else if (colorSheme is LabColorSheme)
+                d = (p1, p2, dim) => dim == 0 ? (p1 - p2) / 100d : (p2 - p2) / 128d;
+
             int n = segment.center.Length;
 
             double[] averages = segment.center;
@@ -39,7 +46,8 @@ namespace SegmentationBasedOnGraph.Assessments
                 {
                     double v = 0;
                     for (int l = 0; l < segment.Length; l++)
-                        v += ((segment.points[l][k] - averages[k])) * ((segment.points[l][p] - averages[p]));
+                        //v += ((segment.points[l][k] - averages[k])) * ((segment.points[l][p] - averages[p]));
+                        v += d(segment.points[l][k], averages[k], k) * d(segment.points[l][p], averages[p], p);
             
             
                     cov[k][p] = v / segment.Length;

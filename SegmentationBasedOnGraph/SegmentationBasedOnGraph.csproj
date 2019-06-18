@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assessments\AssessmentBase.cs" />
-    <Compile Include="Assessments\Assessments.cs" />
     <Compile Include="Assessments\AssessmentsHelper.cs" />
     <Compile Include="Assessments\RatiOfFunctionalsAssessments.cs" />
     <Compile Include="Assessments\SumOfPairwiseInternalDistancesAssessment.cs" />

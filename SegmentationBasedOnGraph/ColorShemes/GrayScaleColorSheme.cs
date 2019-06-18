@@ -13,10 +13,7 @@ namespace SegmentationBasedOnGraph.ColorShemes
 
         public double Difference(double[] colorA, double[] colorB)=>Math.Abs(colorA[0] - colorB[0]);
 
-        //public double AssessmentsDifference(double[] colorA, double[] colorB)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public double AssessmentsDifference(double[] colorA, double[] colorB) => Math.Abs(colorA[0] - colorB[0]) / 255d;
 
     }
 }

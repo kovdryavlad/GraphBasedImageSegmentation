@@ -18,7 +18,7 @@ namespace SegmentationBasedOnGraph.Assessments
             for (int j = 0; j < k; j++)
                 for (int l = 0; l < segments[j].Length - 1; l++)
                     for (int h = l + 1; h < segments[j].Length; h++)
-                        distance += colorSheme.Difference(segments[j].points[l], segments[j].points[h]);
+                        distance += colorSheme.AssessmentsDifference(segments[j].points[l], segments[j].points[h]);
 
             return distance;
         }

@@ -19,14 +19,14 @@ namespace SegmentationBasedOnGraph.ColorShemes
             return Math.Sqrt(rDiff + gDiff + bDiff);
         }
 
-        //public double AssessmentsDifference(double[] colorA, double[] colorB)
-        //{                                                    
-        //    double rDiff = Math.Pow(colorA[0]/255 - colorB[0]/255, 2);
-        //    double gDiff = Math.Pow(colorA[1]/255 - colorB[1]/255, 2);
-        //    double bDiff = Math.Pow(colorA[2]/255 - colorB[2]/255, 2);
-        //
-        //    return Math.Sqrt(rDiff + gDiff + bDiff);
-        //}
+        public double AssessmentsDifference(double[] colorA, double[] colorB)
+        {                                                    
+            double rDiff = Math.Pow((colorA[0] - colorB[0])/255d, 2);
+            double gDiff = Math.Pow((colorA[1] - colorB[1])/255d, 2);
+            double bDiff = Math.Pow((colorA[2] - colorB[2])/255d, 2);
+        
+            return Math.Sqrt(rDiff + gDiff + bDiff);
+        }
 
     }
 }
