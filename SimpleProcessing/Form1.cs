@@ -34,6 +34,8 @@ namespace SimpleProcessing
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            segmented = null;
+
             ResetScrollsBarsValues();
 
             OpenFileDialog openFileWindow = new OpenFileDialog();
@@ -133,6 +135,7 @@ namespace SimpleProcessing
 
             segmented = segmentObj.DoSegmentation(m_workImage, sigma, k, min, colorSheme);
             OutputBitmapOnPictureBox(segmented);
+            outoutSegmented = true;
 
             //вывод в текстбокс
             textBox1.Text += $"Сегментів: {segmentObj.m_componentLength}"+Environment.NewLine;
@@ -221,20 +224,26 @@ namespace SimpleProcessing
             ResetScrollsBarsValues();
         }
 
-        Image remebmered;
+        //Image remebmered;
+        bool outoutSegmented = false;
+
         private void перемикачАБэToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (remebmered == null)
+            if (segmented == null)
+                return;
+
+            if (outoutSegmented)
             {
-                remebmered = pictureBox1.Image;
                 OutputBitmapOnPictureBox(BitmapConverter.DoubleRgbToBitmap(m_workImage));
+                outoutSegmented = false;
             }
 
             else
             {
-                pictureBox1.Image = remebmered;
-                remebmered = null;
+                OutputBitmapOnPictureBox(segmented);
+                outoutSegmented = true;
             }
+           
         }
     }
 }
