@@ -14,7 +14,7 @@ namespace SegmentationBasedOnGraph.Assessments
             {
                 new SumOfTheInternalDispersionsAssessment(),
                 //new SumOfPairwiseInternalDistancesAssessment(),
-                new TotalIntroClusterDispersionAssessment(),
+                //new TotalIntroClusterDispersionAssessment(),
                 //new RatiOfFunctionalsAssessments() // вычислительно очень сложный
             };
         }
