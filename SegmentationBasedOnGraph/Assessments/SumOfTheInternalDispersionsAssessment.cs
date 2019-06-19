@@ -10,6 +10,11 @@ namespace SegmentationBasedOnGraph.Assessments
 {
     class SumOfTheInternalDispersionsAssessment : AssessmentBase
     {
+        public SumOfTheInternalDispersionsAssessment()
+        {
+            this.name = "Сума внутрішньокластерних дисперсій"; 
+        }
+
         internal override double GeAssessment(AssesmentsSegment[] segments, IColorSheme colorSheme)
         {
             double distance = 0;

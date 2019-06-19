@@ -10,6 +10,10 @@ namespace SegmentationBasedOnGraph.Assessments
 {
     class SumOfPairwiseInternalDistancesAssessment : AssessmentBase
     {
+        public SumOfPairwiseInternalDistancesAssessment()
+        {
+            this.name = "Сума попарних внутрішньокластерних відстаней";
+        }
         internal override double GeAssessment(AssesmentsSegment[] segments, IColorSheme colorSheme)
         {
             double distance = 0;

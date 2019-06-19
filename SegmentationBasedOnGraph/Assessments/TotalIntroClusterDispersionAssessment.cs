@@ -11,6 +11,11 @@ namespace SegmentationBasedOnGraph.Assessments
 {
     class TotalIntroClusterDispersionAssessment : AssessmentBase
     {
+        public TotalIntroClusterDispersionAssessment()
+        {
+            this.name = "Загальна внутрішньокластерна дисперсія";
+        }
+
         internal override double GeAssessment(AssesmentsSegment[] segments, IColorSheme colorSheme)
         {
             int k = segments.Length;

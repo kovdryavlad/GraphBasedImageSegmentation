@@ -125,15 +125,15 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.625F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.375F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1117, 538);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -220,7 +220,7 @@
             this.ContrastTextBox.Location = new System.Drawing.Point(211, 38);
             this.ContrastTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.ContrastTextBox.Name = "ContrastTextBox";
-            this.ContrastTextBox.Size = new System.Drawing.Size(30, 20);
+            this.ContrastTextBox.Size = new System.Drawing.Size(26, 20);
             this.ContrastTextBox.TabIndex = 10;
             // 
             // label4
@@ -239,7 +239,7 @@
             this.sigmaTextBox.Location = new System.Drawing.Point(211, 73);
             this.sigmaTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.sigmaTextBox.Name = "sigmaTextBox";
-            this.sigmaTextBox.Size = new System.Drawing.Size(30, 20);
+            this.sigmaTextBox.Size = new System.Drawing.Size(26, 20);
             this.sigmaTextBox.TabIndex = 10;
             this.sigmaTextBox.Text = "0.84";
             // 
@@ -248,7 +248,7 @@
             this.button5.Location = new System.Drawing.Point(5, 70);
             this.button5.Margin = new System.Windows.Forms.Padding(5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 21);
+            this.button5.Size = new System.Drawing.Size(71, 21);
             this.button5.TabIndex = 13;
             this.button5.Text = "Розмити";
             this.button5.UseVisualStyleBackColor = true;
@@ -258,7 +258,7 @@
             // 
             this.button4.Location = new System.Drawing.Point(95, 159);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 23);
+            this.button4.Size = new System.Drawing.Size(95, 23);
             this.button4.TabIndex = 11;
             this.button4.Text = "Сегментувати";
             this.button4.UseVisualStyleBackColor = true;
@@ -291,7 +291,7 @@
             this.KtextBox.Location = new System.Drawing.Point(211, 104);
             this.KtextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.KtextBox.Name = "KtextBox";
-            this.KtextBox.Size = new System.Drawing.Size(30, 20);
+            this.KtextBox.Size = new System.Drawing.Size(26, 20);
             this.KtextBox.TabIndex = 10;
             this.KtextBox.Text = "200";
             // 
@@ -300,7 +300,7 @@
             this.MinTextBox.Location = new System.Drawing.Point(211, 134);
             this.MinTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.MinTextBox.Name = "MinTextBox";
-            this.MinTextBox.Size = new System.Drawing.Size(30, 20);
+            this.MinTextBox.Size = new System.Drawing.Size(26, 20);
             this.MinTextBox.TabIndex = 10;
             this.MinTextBox.Text = "100";
             // 
@@ -342,7 +342,7 @@
             this.trackBar1.Maximum = 100;
             this.trackBar1.Minimum = -100;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(110, 24);
+            this.trackBar1.Size = new System.Drawing.Size(95, 24);
             this.trackBar1.TabIndex = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -351,7 +351,7 @@
             this.BrightnessTextBox.Location = new System.Drawing.Point(211, 8);
             this.BrightnessTextBox.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.BrightnessTextBox.Name = "BrightnessTextBox";
-            this.BrightnessTextBox.Size = new System.Drawing.Size(30, 20);
+            this.BrightnessTextBox.Size = new System.Drawing.Size(26, 20);
             this.BrightnessTextBox.TabIndex = 2;
             // 
             // label1

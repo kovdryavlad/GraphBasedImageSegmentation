@@ -241,10 +241,10 @@ namespace SegmentationBasedOnGraph
             AssessmentBase[] assesments = AssessmentsHelper.GetAllAssessments();
             for (int i = 0; i < assesments.Length; i++)
             {
-                assesments[i].name = $"Оцінка {i}";
+                //assesments[i].name = $"Оцінка {i}";
                 double value = assesments[i].GeAssessment(segments, m_colorSheme);
 
-                s += $"{assesments[i].name}: {value.ToString("0.0000")}"+Environment.NewLine;
+                s += $"{assesments[i].name}: {value.ToString("0.00")}"+Environment.NewLine + Environment.NewLine;
 
                 System.Diagnostics.Debug.WriteLine($"Оценка {i} готова. "+ DateTime.Now);
             }

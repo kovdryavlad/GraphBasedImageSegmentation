@@ -138,7 +138,7 @@ namespace SimpleProcessing
             outoutSegmented = true;
 
             //вывод в текстбокс
-            textBox1.Text += $"Сегментів: {segmentObj.m_componentLength}"+Environment.NewLine;
+            textBox1.Text += $"Сегментів: {segmentObj.m_componentLength}"+Environment.NewLine+Environment.NewLine;
 
             if (AssessmentCheckBox.Checked)
                 textBox1.Text += segmentObj.CalcAssessments(); 
