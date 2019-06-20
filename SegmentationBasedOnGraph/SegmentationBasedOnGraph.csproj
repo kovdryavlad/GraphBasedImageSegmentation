@@ -53,6 +53,7 @@
     <Compile Include="Assessments\AssessmentBase.cs" />
     <Compile Include="Assessments\AssessmentsHelper.cs" />
     <Compile Include="Assessments\RatiOfFunctionalsAssessments.cs" />
+    <Compile Include="Assessments\ScoreFunctionAssessment.cs" />
     <Compile Include="Assessments\SumOfPairwiseInternalDistancesAssessment.cs" />
     <Compile Include="Assessments\SumOfTheInternalDispersionsAssessment.cs" />
     <Compile Include="Assessments\TotalIntroClusterDispersionAssessment.cs" />

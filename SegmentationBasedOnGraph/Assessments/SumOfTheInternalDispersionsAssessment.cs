@@ -23,6 +23,7 @@ namespace SegmentationBasedOnGraph.Assessments
             for (int j = 0; j < k; j++)
                 for (int l = 0; l < segments[j].Length; l++)
                     distance += Math.Pow(colorSheme.AssessmentsDifference(segments[j].points[l], segments[j].center), 2);
+                    //distance += colorSheme.AssessmentsDifference(segments[j].points[l], segments[j].center);
 
             return distance;
         }

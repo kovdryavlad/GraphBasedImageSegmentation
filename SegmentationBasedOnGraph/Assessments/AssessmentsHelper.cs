@@ -13,6 +13,7 @@ namespace SegmentationBasedOnGraph.Assessments
             return new AssessmentBase[]
             {
                 new SumOfTheInternalDispersionsAssessment(),
+                new ScoreFunctionAssessment(),
                 //new SumOfPairwiseInternalDistancesAssessment(),
                 //new TotalIntroClusterDispersionAssessment(),
                 //new RatiOfFunctionalsAssessments() // вычислительно очень сложный
