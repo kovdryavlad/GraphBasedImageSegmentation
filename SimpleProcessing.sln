@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadingTest", "ReadingTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationBasedOnGraph", "SegmentationBasedOnGraph\SegmentationBasedOnGraph.csproj", "{C5A6A232-1200-4B90-ADD9-7888C4C31D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationsTestToExcel", "ConsoleApp1\SegmentationsTestToExcel.csproj", "{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
