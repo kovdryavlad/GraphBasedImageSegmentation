@@ -97,7 +97,7 @@ namespace SegmentationTestToExcel
                 {
                     //получение результатов сегментации
                     Segmentation segmentationObj = new Segmentation();
-                    Bitmap res = segmentationObj.DoSegmentation(b, 0.84, k, min, new SegmentationBasedOnGraph.ColorShemes.RGBColorSheme());
+                    Bitmap res = segmentationObj.DoSegmentation(b, 0.84, k, min, new SegmentationBasedOnGraph.ColorShemes.LabColorSheme());
 
                     //приведение результатов к нужному размеру
                     res = Service.ResizeImage(res, width, height);
