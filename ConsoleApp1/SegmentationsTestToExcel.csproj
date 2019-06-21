@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ImageProcessor\ImageProcessor.csproj" />
+    <ProjectReference Include="..\SegmentationBasedOnGraph\SegmentationBasedOnGraph.csproj" />
   </ItemGroup>
 
   <ItemGroup>

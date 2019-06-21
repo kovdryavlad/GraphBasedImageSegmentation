@@ -71,7 +71,7 @@ namespace SegmentationBasedOnGraph
 
             //debugging
 
-            System.Diagnostics.Debug.WriteLine("edges total: "+ edges.Length);
+            System.Diagnostics.Debug.WriteLine("edges total: " + edges.Length);
 
             //double minWeight = edges.Min(el => el.w);
             //double maxWeight = edges.Max(el => el.w);
@@ -84,7 +84,7 @@ namespace SegmentationBasedOnGraph
             //Edge[] edgesBottom = edges.Where(el => el.neightbourType == NeightbourType.BottomDiagonal).ToArray();
 
             //сегментированный лес непересекающихся деревьев
-            DisjointSet segmentedSet = SegmentOnDisjointSet(k, m_height*m_width, edges);  //картинка тут только для передачи размера потому осталась arrayImage
+            DisjointSet segmentedSet = SegmentOnDisjointSet(k, m_height * m_width, edges);  //картинка тут только для передачи размера потому осталась arrayImage
             //запоминание в поле для проведения оценки
             m_segmentedSet = segmentedSet;
 
@@ -188,7 +188,7 @@ namespace SegmentationBasedOnGraph
             // for each edge, in non-decreasing weight order...
             for (int i = 0; i < edges.Length; i++)
             {
-                if(i%100000==0)
+                if (i % 100000 == 0)
                     System.Diagnostics.Debug.WriteLine("itaration: " + i);
 
                 Edge edge = edges[i];
@@ -210,7 +210,7 @@ namespace SegmentationBasedOnGraph
 
             return disjointSet;
         }
-        
+
         private void DebugImageInfo(double[,,] arrayImage)
         {
             int width = arrayImage.GetLength(2);
@@ -230,9 +230,9 @@ namespace SegmentationBasedOnGraph
             }
         }
 
-        public string CalcAssessments() 
+        public string CalcAssessments()
         {
-            System.Diagnostics.Debug.WriteLine("===Начало оценивания качества сегментации==="+ DateTime.Now);
+            System.Diagnostics.Debug.WriteLine("===Начало оценивания качества сегментации===" + DateTime.Now);
 
             string s = string.Empty;
 
@@ -244,12 +244,20 @@ namespace SegmentationBasedOnGraph
                 //assesments[i].name = $"Оцінка {i}";
                 double value = assesments[i].GeAssessment(segments, m_colorSheme);
 
-                s += $"{assesments[i].name}: {value.ToString("0.00")}"+Environment.NewLine + Environment.NewLine;
+                s += $"{assesments[i].name}: {value.ToString("0.00")}" + Environment.NewLine + Environment.NewLine;
 
-                System.Diagnostics.Debug.WriteLine($"Оценка {i} готова. "+ DateTime.Now);
+                System.Diagnostics.Debug.WriteLine($"Оценка {i} готова. " + DateTime.Now);
             }
 
             return s;
+        }
+
+        public double GetInternalDifferenceAssessment()
+        {
+            AssesmentsSegment[] segments = SegmentedSetConverter.ConvertToAssessmentSegments(m_segmentedSet, m_height, m_width, m_arrayImageCopy, m_colorSheme);
+
+            SumOfTheInternalDispersionsAssessment assessment = new SumOfTheInternalDispersionsAssessment();
+            return assessment.GeAssessment(segments, m_colorSheme);
         }
     }
 }

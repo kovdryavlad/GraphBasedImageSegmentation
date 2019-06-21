@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadingTest", "ReadingTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationBasedOnGraph", "SegmentationBasedOnGraph\SegmentationBasedOnGraph.csproj", "{C5A6A232-1200-4B90-ADD9-7888C4C31D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationsTestToExcel", "ConsoleApp1\SegmentationsTestToExcel.csproj", "{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentationTestToExcel", "SegmentationTestToExcel\SegmentationTestToExcel.csproj", "{93E10DE8-5BE7-4A65-BB2C-5A842C03F029}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A6A232-1200-4B90-ADD9-7888C4C31D91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52D4B8D4-B10B-4DB0-8567-55845B61CDE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E10DE8-5BE7-4A65-BB2C-5A842C03F029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E10DE8-5BE7-4A65-BB2C-5A842C03F029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E10DE8-5BE7-4A65-BB2C-5A842C03F029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E10DE8-5BE7-4A65-BB2C-5A842C03F029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

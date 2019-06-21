@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Aspose.Cells;
 using Aspose.Cells.Drawing;
+using ImageProcessor;
 
 namespace ConsoleApp1
 {
@@ -74,8 +75,10 @@ namespace ConsoleApp1
             //image reading
             Bitmap b = new Bitmap(filename);
 
-            MemoryStream memoryStream = new MemoryStream();
-            b.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            double[,,] arrayImage = BitmapConverter.BitmapToDoubleRgb(b);
+
+            //MemoryStream memoryStream = new MemoryStream();
+            //b.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             //processing cycle
             for (int k = kMin, i = 0; k <= kMax; k += kStep, i++)
