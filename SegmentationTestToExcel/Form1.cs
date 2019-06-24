@@ -21,13 +21,21 @@ namespace SegmentationTestToExcel
             InitializeComponent();
         }
 
-        int kMin = 100;
-        int kMax = 1200;
-        int kStep = 100;
+        //int kMin = 100;
+        //int kMax = 1200;
+        //int kStep = 100;
+        //
+        //int minMin = 100;
+        //int minMax = 1200;
+        //int minStep = 100;
 
-        int minMin = 100;
-        int minMax = 1200;
-        int minStep = 100;
+        int kMin = 10;
+        int kMax = 300;
+        int kStep = 10;
+
+        int minMin = 10;
+        int minMax = 300;
+        int minStep = 10;
 
         int RowsForDetails = 2;
         int startImageRowNumber = 1;
@@ -39,8 +47,8 @@ namespace SegmentationTestToExcel
             if (ofd.ShowDialog() != DialogResult.OK)
                 return;
 
-            int width = 545;
-            int height = 409;
+            int width = 371;
+            int height = 210;
 
             //int width = 640;
             //int height = 400;
@@ -50,7 +58,7 @@ namespace SegmentationTestToExcel
 
             OutputSegmentations(wb, ofd.FileName, width, height);
 
-            wb.Save("D:\\diplomaExcelTests\\TEST_Lab12_12.xlsx", SaveFormat.Xlsx);
+            wb.Save("D:\\diplomaExcelTests\\RGBTestFighting.xlsx", SaveFormat.Xlsx);
             
             Console.WriteLine("Done");
         }
@@ -97,10 +105,10 @@ namespace SegmentationTestToExcel
                 {
                     //получение результатов сегментации
                     Segmentation segmentationObj = new Segmentation();
-                    Bitmap res = segmentationObj.DoSegmentation(b, 0.84, k, min, new SegmentationBasedOnGraph.ColorShemes.LabColorSheme());
+                    Bitmap res = segmentationObj.DoSegmentation(b, 0.84, k, min, new SegmentationBasedOnGraph.ColorShemes.RGBColorSheme());
 
                     //приведение результатов к нужному размеру
-                    res = Service.ResizeImage(res, width, height);
+                    //res = Service.ResizeImage(res, width, height);
 
                     ///сохранения результата в поток
                     MemoryStream memoryStream = new MemoryStream();
