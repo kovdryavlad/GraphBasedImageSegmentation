@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SegmentationBasedOnGraph
 {
-    class Edge
+    public class Edge
     {
         public int currentY;
         public int currentX;

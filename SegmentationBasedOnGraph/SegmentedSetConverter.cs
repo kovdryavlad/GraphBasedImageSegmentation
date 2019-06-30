@@ -34,7 +34,7 @@ namespace SegmentationBasedOnGraph
 
                         int compSize = segmentedSet.Size(comp);
                         totalSize += compSize;
-                        System.Diagnostics.Debug.WriteLine("Component: " + comp + " | size: " + compSize);
+                        //System.Diagnostics.Debug.WriteLine("Component: " + comp + " | size: " + compSize);
                     }
 
 
@@ -44,8 +44,8 @@ namespace SegmentationBasedOnGraph
                 }
             }
 
-            System.Diagnostics.Debug.WriteLine("Total Size: " + totalSize);
-            System.Diagnostics.Debug.WriteLine("Height*Width: " + height * width);
+            //System.Diagnostics.Debug.WriteLine("Total Size: " + totalSize);
+            //System.Diagnostics.Debug.WriteLine("Height*Width: " + height * width);
 
             segmentsCount = colors.Count;
             return BitmapConverter.DoubleRgbToBitmap(im);

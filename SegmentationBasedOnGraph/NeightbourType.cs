@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SegmentationBasedOnGraph
 {
-    enum NeightbourType
+    public enum NeightbourType
     {
         TopDiagonal,
         Horizontal,

@@ -37,7 +37,7 @@ namespace SegmentationBasedOnGraph
             m_width = arrayImage.GetLength(2);
 
             //debug
-            System.Diagnostics.Debug.WriteLine("Reading done: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("Reading done: " + DateTime.Now);
 
             m_colorSheme = colorSheme;
 
@@ -48,7 +48,7 @@ namespace SegmentationBasedOnGraph
             m_arrayImageCopy = (double[,,])arrayImage.Clone();
 
             //debug
-            System.Diagnostics.Debug.WriteLine("color sheme changed: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("color sheme changed: " + DateTime.Now);
             //DebugImageInfo(arrayImage);
 
             //smoothing
@@ -57,7 +57,7 @@ namespace SegmentationBasedOnGraph
             double[,,] blurredImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
 
             //debug
-            System.Diagnostics.Debug.WriteLine("Smooting done: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("Smooting done: " + DateTime.Now);
             //тест размещения преобразования цвета
             //arrayImage = colorSheme.Convert(arrayImage);
 
@@ -67,11 +67,11 @@ namespace SegmentationBasedOnGraph
                                 .ToArray();
 
             //debug
-            System.Diagnostics.Debug.WriteLine("graph builded: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("graph builded: " + DateTime.Now);
 
             //debugging
 
-            System.Diagnostics.Debug.WriteLine("edges total: " + edges.Length);
+            //System.Diagnostics.Debug.WriteLine("edges total: " + edges.Length);
 
             //double minWeight = edges.Min(el => el.w);
             //double maxWeight = edges.Max(el => el.w);
@@ -89,13 +89,13 @@ namespace SegmentationBasedOnGraph
             m_segmentedSet = segmentedSet;
 
             //debug
-            System.Diagnostics.Debug.WriteLine("Segmented: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("Segmented: " + DateTime.Now);
 
             //присоеденить те, что меньше min_size к соседу по ребру
             PostProcessSmallComponents(edges, segmentedSet, minSize);
 
             //debug
-            System.Diagnostics.Debug.WriteLine("Small Component Merged: " + DateTime.Now);
+            //System.Diagnostics.Debug.WriteLine("Small Component Merged: " + DateTime.Now);
 
             return SegmentedSetConverter.ConvertToBitmap(segmentedSet, m_height, m_width, out m_componentLength);
             //var a = SegmentedSetConverter.ConvertToRealCoordsSegments(segmentedSet, height, width);
@@ -188,8 +188,8 @@ namespace SegmentationBasedOnGraph
             // for each edge, in non-decreasing weight order...
             for (int i = 0; i < edges.Length; i++)
             {
-                if (i % 100000 == 0)
-                    System.Diagnostics.Debug.WriteLine("itaration: " + i);
+               // if (i % 100000 == 0)
+               //     System.Diagnostics.Debug.WriteLine("itaration: " + i);
 
                 Edge edge = edges[i];
 
@@ -258,6 +258,38 @@ namespace SegmentationBasedOnGraph
 
             SumOfTheInternalDispersionsAssessment assessment = new SumOfTheInternalDispersionsAssessment();
             return assessment.GeAssessment(segments, m_colorSheme);
+        }
+
+        public Edge[] SegmentationPart1(double[,,] arrayImage, double sigma,
+                    IColorSheme colorSheme)
+        {
+            m_height = arrayImage.GetLength(1);
+            m_width = arrayImage.GetLength(2);
+
+            m_colorSheme = colorSheme;
+
+            arrayImage = colorSheme.Convert(arrayImage);
+            
+            //smoothing
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            double[][] filter = gaussianBlur.getKernel(sigma);
+            double[,,] blurredImage = DoubleArrayImageOperations.ConvolutionFilter(arrayImage, filter);
+
+            Edge[] edges = buildGraphByImage(blurredImage)
+                                .OrderBy(el => el.w)
+                                .ToArray();
+
+            return edges;
+        }
+
+        public int SegmentationPart2(Edge[] edges, int k, int minSize)
+        {
+            DisjointSet segmentedSet = SegmentOnDisjointSet(k, m_height * m_width, edges);  
+
+            PostProcessSmallComponents(edges, segmentedSet, minSize);
+            Bitmap b = SegmentedSetConverter.ConvertToBitmap(segmentedSet, m_height, m_width, out int componentLen);
+
+            return componentLen;
         }
     }
 }

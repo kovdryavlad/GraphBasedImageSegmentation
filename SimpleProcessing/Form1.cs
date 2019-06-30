@@ -42,6 +42,9 @@ namespace SimpleProcessing
             if (openFileWindow.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bmp = new Bitmap(openFileWindow.FileName);
+                if (bmp.Width > 2000 || bmp.Height > 2000)
+                    bmp = GetScaledBitmap(bmp);
+
                 m_workImage = BitmapConverter.BitmapToDoubleRgb(bmp);
                 m_originalImage = (double[,,])m_workImage.Clone();
 
@@ -143,6 +146,35 @@ namespace SimpleProcessing
             if (AssessmentCheckBox.Checked)
                 textBox1.Text += segmentObj.CalcAssessments(); 
         }
+
+        Bitmap GetScaledBitmap(Bitmap image, int widthMax = 2000, int heightMax = 2000)
+        {
+            double Wreal = image.Width;
+            double Hreal = image.Height;
+
+            if (Wreal > widthMax || heightMax > 2000)
+            {
+
+                double Wmax = widthMax;
+                double Hmax = heightMax;
+
+                double l = Hreal / Wreal;
+
+                int scaledWidth = (int)Wmax;
+                int scaledHeight = (int)Hmax;
+
+                if (Wreal / Wmax > Hreal / Hmax)
+                    scaledHeight = (int)(Wmax * l);
+
+                else
+                    scaledWidth = (int)(Hmax / l);
+
+                return Service.ResizeImage(image, scaledWidth, scaledHeight);
+            }
+
+            return image;
+        }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
