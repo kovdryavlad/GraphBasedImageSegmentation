@@ -21,22 +21,14 @@ namespace SegmentationTestToExcel
             InitializeComponent();
         }
 
-        //int kMin = 100;
-        //int kMax = 1200;
-        //int kStep = 100;
-        //
-        //int minMin = 100;
-        //int minMax = 1200;
-        //int minStep = 100;
-
-        int kMin = 10;
-        int kMax = 300;
-        int kStep = 10;
-
-        int minMin = 10;
-        int minMax = 300;
-        int minStep = 10;
-
+        int kMin = 100;
+        int kMax = 1200;
+        int kStep = 100;
+        
+        int minMin = 100;
+        int minMax = 1200;
+        int minStep = 100;
+        
         int RowsForDetails = 2;
         int startImageRowNumber = 1;
         int startImageColumnNumber = 1;
@@ -47,11 +39,8 @@ namespace SegmentationTestToExcel
             if (ofd.ShowDialog() != DialogResult.OK)
                 return;
 
-            int width = 371;
-            int height = 210;
-
-            //int width = 640;
-            //int height = 400;
+            int width = 640;
+            int height = 400;
 
             Workbook wb = new Workbook();
             SetHeadersAndStyles(wb, width, height);
@@ -108,13 +97,15 @@ namespace SegmentationTestToExcel
                     Bitmap res = segmentationObj.DoSegmentation(b, 0.84, k, min, new SegmentationBasedOnGraph.ColorShemes.RGBColorSheme());
 
                     //приведение результатов к нужному размеру
-                    //res = Service.ResizeImage(res, width, height);
+                    res = Service.ResizeImage(res, width, height);
 
                     ///сохранения результата в поток
                     MemoryStream memoryStream = new MemoryStream();
                     res.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 
                     //добавления сегментации на страницу 
+                    ws.Cells[currentRow + 1, j].Value = segmentationObj.m_componentLength.ToString(); 
+
                     int idx = ws.Pictures.Add(currentRow, j, memoryStream);
 
                     ws.Cells[currentRow + 1, j].Value = $"Сегментів: {segmentationObj.m_componentLength}"; 
