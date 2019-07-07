@@ -1,6 +1,6 @@
 # GraphBasedImageSegmentation
 
 Graph based image segmentation.
-It's my graduated work.
+It's my graduate work.
 
 Full report: Диплом9. Ковдря.docx
